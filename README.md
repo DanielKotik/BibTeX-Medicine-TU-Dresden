@@ -2,11 +2,11 @@
 BibTeX citation style for the Faculty of Medicine Carl Gustav Carus at the 
 Technische Universität Dresden
 
-### features of humanmutationTUD.bst
+### Features of humanmutationTUD.bst
 * providing an optional field ``language`` (can be omitted or empty, then English is the default)
 * depending on the language given in the language field, the corresponding 
   abbreviations for ``editor(s)``, ``pages(s)``, ``volume``, ``number`` etc. are 
-  chosen to be ``eds.``, ``p.``, ``pp.``, ``vol.`` and ``nr.`` for English, and ``Hrsg.``, 
+  chosen to be ``ed.``, ``eds.``, ``p.``, ``pp.``, ``vol.`` and ``nr.`` for English, and ``Hrsg.``, 
   ``S.``, ``Bd.`` and ``Nr.`` for German, respectively
 * editor field in parentheses: ``(Hrsg)``, ``(ed)`` or ``(eds)``, respectively
 * incollection booktitle preceded by ``In: ``
