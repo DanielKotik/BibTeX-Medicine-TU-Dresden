@@ -1,0 +1,361 @@
+\documentclass[a4paper,10pt]{scrartcl}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{helvet}
+\usepackage{geometry}
+\geometry{a4paper, top=25mm, left=30mm, right=25mm, bottom=30mm,
+headsep=10mm, footskip=12mm}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{pdfpages}
+\usepackage{bigfoot}
+\usepackage{ulem}     % zum durchstreichen
+\normalem
+\usepackage{fancyvrb}
+%\usepackage[usenames,dvipsnames]{xcolor}
+
+\usepackage{blindtext}
+\usepackage{cprotect}
+\usepackage{hologo}   % for BibTex Logo
+
+\usepackage[english,main=ngerman]{babel}
+\usepackage{multibib}
+\newcites{books,incoll,journals,websites}{Beispiel: Monographie,%
+Beispiel: Sammelb\"ande,%
+Beispiel: Artikel,%
+Beispiel: Webseiten}
+\usepackage{natbib}
+\setlength{\bibhang}{0em}     % Quellen ohne hängenden Einzug im Literatur-
+			      % verzeichnis
+
+\renewcommand{\cite}{\citep}  %
+\bibliographystyle{humanmutationTUD}     % angepasste Stildatei
+\addto\captionsngerman{\renewcommand{\refname}{Literaturverzeichnis}}
+
+\usepackage[%
+   breaklinks            % Links ueberstehen Zeilenumbruch
+  ,ocgcolorlinks         % Links erhalten Farben statt Kaesten; im Druck werden
+                         % keine bunten Farben verwendet
+  ,citecolor=blue        % Farbe fuer Zitate
+  ,linkcolor=blue        % beeinflusst Inhaltsverzeichnis und Seitenzahlen
+  ,urlcolor=blue         % Farbe fuer URLs
+  ]
+  {hyperref}             % PDF automatisch mit Links versehen und weitere
+                         % Hypertext-Funktionalitaet ermoeglichen
+%\usepackage{url}
+\def\UrlFont{\sffamily}  % URLs in Sans Serif
+
+
+%opening
+\title{Anpassungen des Stils \emph{Human Mutation} an die
+Richtlinien der Medizinischen Fakultät Carl Gustav Carus, TU Dresden}
+\subtitle{v0.1 vom 5.~Mai 2017}
+\author{Daniel Kotik\\
+\large\url{https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden}\\
+\large\url{daniel.kotik85@gmail.com}}
+\date{}
+
+\begin{document}
+\setlength{\parindent}{0em}
+\maketitle
+
+\begin{abstract}
+Zur Umsetzung der Zitations- und Bibliographievorgaben für Dissertationen an
+der Medizinischen Fakultät der TU~Dresden unter Verwendung von \LaTeX\ mit
+\hologo{BibTeX} wird die Bibliographie Stil Datei
+\verb|humanmutationTUD.bst| bereitgestellt. Die vorliegende Dokumentation gibt
+Erläuterungen und allgemeine Hinweise zur korrekten Verwendung dieser Stil
+Datei.
+\end{abstract}
+
+\section{Allgemeine Hinweise}
+Die Zitations- und Bibliographievorgaben \cite{ZitiervorgabenCGC} der
+Medizinischen Fakultät Carl Custav
+Carus, TU~Dresden sind an den Stil der Zeitschrift Human
+Mutation\footnote{\url{%
+http://onlinelibrary.wiley.com/journal/10.1002/(ISSN)1098-1004}} angelehnt.
+Zur Erfüllung der Vorgaben der Richtlinie muss der Stil unter anderem zusätzlich
+an die der jeweiligen Referenz zugrunde liegenden Sprache angepasst werden um
+sprachabhängige Abkürzungen in der Bibliographie zu ermöglichen (zum Beispiel
+"`Hrsg"' oder "`ed"' bzw.\ "`eds"').
+Hierfür wird eine optionale Feldvariable \verb|language={...}|
+bereitgestellt, welche zusätzlich die korrekte sprachabhängige Silbentrennung
+des Titels der Referenz gewährleistet\footnote{Hierfür wird das Paket
+\verb|babel| genutzt.}. Fehlt die Angabe dieser Feldvariablen oder bleibt sie
+leer, so wird standardmä{\ss}ig Englisch als Sprache für die jeweilige Referenz
+angenommen.
+
+Die Stildatei \verb|humanmutationTUD.bst| unterstützt folgende Literaturtypen:
+\verb|article|, \verb|book|, \verb|booklet|, \verb|inbook|,
+\verb|incollection|, \verb|inproceedings|(=\verb|conference|), \verb|manual|,
+\verb|mastersthesis|, \verb|misc|, \verb|phdthesis|, \verb|proceedings|,
+\verb|techreport|, \verb|unpublished|.
+
+%TODO: Angaben, welche Typen besonders durch den Stil beeinflusst werden (book,
+%inpriceedings, webiste, unpublished). --> neuer Typ 'website'
+
+Im Literaturverzeichnis des vorliegenden
+Dokuments findet der hier
+dargelegte Bibliographiestil bereits Anwendung. \\\\
+Es sein darauf verwiesen, dass die unter \cite{humanmutationSchneider}
+verfügbaren Stil- und Paketdateien \verb|humanmutation.bst| und
+\verb|humanmutation.sty| veraltet sind und auch nicht den zusätzlichen Vorgaben
+nach \cite{ZitiervorgabenCGC} entsprechen.
+
+\section{Integration in \LaTeX}
+In der Präambel sind folgende Pakete einzubinden und Kommandos (optional) zu
+definieren:
+\begin{singlespace}
+\begin{Verbatim}[frame=single]
+\usepackage[english,main=ngerman]{babel}  % Laden der Spachpakete mit Deutsch
+                                          % als Standardsprache im Hauptdokument
+
+\usepackage{natbib}  % notwendig zur Umsetzung des Zitiertils (Autor[en], Jahr) im
+                     % Fliesstext
+
+\setlength{\bibhang}{0em}  % Quellen ohne hängenden Einzug im Literaturverzeichnis
+
+\renewcommand{\cite}{\citep}  % optional, falls nicht mit dem durch natbib
+                              % bereitsgestellten \citep{}, sondern mit \cite{}
+                              % gearbeitet werden möchte
+
+\bibliographystyle{humanmutationTUD}  % angepasste Bibliographiestildatei ohne
+                                      % Endung '.bst' angeben
+\usepackage{url}         % ODER aber \usepackage[...]{hyperref} für farbige und
+                         % klickbare Links im PDF
+\def\UrlFont{\sffamily}  % verhindert URLs in Schreibmaschinenschrift
+\end{Verbatim}
+\end{singlespace}
+
+Die Stildatei \verb|humanmutationTUD.bst| muss sich im gleichen Ordner wie
+das Hauptdokument (bspw.\ \verb|dissertation.tex|) befinden. Zur Erstellung
+des finalen PDF Dokuments sind üblicherweise drei \hologo{pdfLaTeX} Durchläufe
+und ein \hologo{BibTeX} Durchlauf erforderlich, und zwar in folgender
+Reihenfolge:\\
+\begin{center}
+ \begin{minipage}{0.7\textwidth}
+  \verb|pdflatex dissertation.tex|\\
+  \verb|bibtex dissertation.aux|\\
+  \verb|pdflatex dissertation.tex|\\
+  \verb|pdflatex dissertation.tex|
+ \end{minipage}
+\end{center}
+
+
+%TODO: Erklären wo die bst Datei liegen muss und Ablauf pdflatex --> bibtex etc.
+
+\section{Möglichkeiten zum Zitieren}
+Im Folgenden wird gezeigt wie verschiedene Literaturtypen (Bücher,
+Sammelbände, Artikel und Webseiten) korrekt unter Verwendung der Stildatei
+\verb|humanmutationTUD.bst| zitiert werden.
+\subsection{Zitieren von Büchern und Monographien}
+Da es sich bei \citebooks{Schuhmacher2005} um ein deutsches Werk handelt, ist
+die Angabe von \verb|language={ngerman}| im Eintrag erforderlich.
+%TODO: Wird für ein englisches Buch der Titel verändert (Gross/Kleinschreibung)?
+
+\cprotect{\noindent\makebox[1.0\textwidth][c]}{%
+\small
+\begin{minipage}[t]{1.2\textwidth}
+    \begin{minipage}[t][5cm][c]{0.527\textwidth}
+      %\hrulefill
+      \begin{singlespace}
+      \begin{Verbatim}[frame=single,commandchars=\\\(\)]
+@book{Schuhmacher2005,
+  title     = {Prometheus: Allgemeine Anatomie und
+               Bewegungssystem -- LernAtlas der Anatomie},
+  author    = {Schuhmacher, U and Schulte, E and
+               Schünke, M},
+  year      = {2005},
+  (\color(red)language  = {ngerman},)
+  edition   = {3},
+  publisher = {Thieme},
+  address   = {Stuttgart}
+}
+     \end{Verbatim}
+     \end{singlespace}
+     %\hrulefill
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t][5cm][c]{0.45\textwidth}
+      %\hrulefill
+      \bibliographybooks{example}
+      \bibliographystylebooks{humanmutationTUD}
+      %\hrulefill
+    \end{minipage}
+\end{minipage}
+}
+
+\subsection{Zitieren von Arbeiten in Sammelbänden}
+Anhand von~\citeincoll{incollection_a} und~\citeincoll{incollection_b} werden
+die sprachlichen Unterschiede in der Bibliographie beim Zitieren von
+Sammelb\"anden verdeutlicht. Auch hier gilt, dass die Angabe von
+\verb|language={ngerman}| im ersten Eintrag notwendig, die Angabe von
+\verb|language={english}| im zweiten Eintrag hingegen nicht zwingend
+erforderlich ist. Das Feld \verb|note| ist optional. Die Zeichenkette im Feld \verb|booktitle| wird sprachunabhängig unverändert in der Bibliographie wiedergegeben
+(d.h.\ keine Veränderung der Gro{\ss}- und Kleinschreibung wie bei \verb|title| im Falle von \verb|language={english}|).
+
+\cprotect{\noindent\makebox[1.0\textwidth][c]}{%
+\small
+\begin{minipage}[t]{1.15\textwidth}
+    \begin{minipage}[t][13cm][c]{0.522\textwidth}
+      %\hrulefill
+      \begin{singlespace}
+      \begin{Verbatim}[frame=single,commandchars=\\\(\)]
+@incollection{incollection_a,
+  author      = {Dirac, Paul},
+  title       = {Titel der fiktionalen Arbeit},
+  booktitle   = {Titel des fiktionalen Buches},
+  publisher   = {Name des Verlegers},
+  year        = 1950,
+  editor      = {Einstein, Albert and Pauli, Wolfgang},
+  volume      = 4,
+  series      = 5,
+  chapter     = 8,
+  pages       = {201-213},
+  address     = {Verlagsanschrift},
+  edition     = {3},
+  (\color(red)language    = {ngerman},)
+  note        = {Ein optionaler Hinweis}
+}
+
+@incollection{incollection_b,
+  author      = {Dirac, Paul},
+  title       = {The Title of the fictional Work},
+  booktitle   = {The Title of the fictional Book},
+  publisher   = {The name of the publisher},
+  year        = 1950,
+  editor      = {Einstein, Albert and Pauli, Wolfgang},
+  volume      = 4,
+  series      = 5,
+  chapter     = 8,
+  pages       = {201-213},
+  address     = {The address of the publisher},
+  edition     = {3},
+  (\color(red)language    = {english},)
+  note        = {An optional note}
+}
+     \end{Verbatim}
+     \end{singlespace}
+     %\hrulefill
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t][13cm][c]{0.45\textwidth}
+      %\hrulefill
+      \bibliographyincoll{example}
+      \bibliographystyleincoll{humanmutationTUD}
+      %\hrulefill
+    \end{minipage}
+\end{minipage}
+}
+
+\subsection{Zitieren von Artikeln}
+Anhand von~\citejournals{vonschulthess2010} wird das Zitieren eines Artikels
+verdeutlicht.
+
+%TODO: Es fehlt ein preprint Artikel!
+
+\cprotect{\noindent\makebox[1.0\textwidth][c]}{%
+\small
+\begin{minipage}[t]{1.2\textwidth}
+    \begin{minipage}[t][6cm][c]{0.52\textwidth}
+      %\hrulefill
+      \begin{singlespace}
+      \begin{Verbatim}[frame=single,commandchars=\\\(\)]
+@article{vonschulthess2010,
+   author   = {von Schulthess, G. K. and Burger, C.},
+   title    = {Integrating imaging modalities: what
+               makes sense from a workflow perspective?},
+   journal  = {Eur J Nucl Med Mol Imaging},
+   volume   = {37},
+   number   = {5},
+   pages    = {980-990},
+   month    = 10,
+   year     = {2010}
+}
+     \end{Verbatim}
+     \end{singlespace}
+     %\hrulefill
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t][6cm][c]{0.45\textwidth}
+      %\hrulefill
+      \bibliographyjournals{example}
+      \bibliographystylejournals{humanmutationTUD}
+      %\hrulefill
+    \end{minipage}
+\end{minipage}
+}
+
+%TODO:\subsection{Zitieren von Webseiten}
+%TODO: Zitierung von zwei Webseiten: einmal mit short URL, einmal gewöhnlich.
+
+\subsection{Fallstricke}
+Hier zitieren wir den Artikel~\cite{teras2016_FALSCH} und noch einmal in
+verbesserter Form~\cite{teras2016_RICHTIG}. Beide Zitate referenzieren
+tats\"achlich die gleiche Quelle, nur das beim zweiten Zitat der
+Titel auch \emph{korrekt} in der Bibliographie angezeigt wird. Der
+marginale Unterschied des entsprechenden Eintrages
+in der \verb|.bib| Datei besteht im Folgendem:\\\\
+\emph{falsch}
+\begin{Verbatim}
+title = {2016 US lymphoid malignancy statistics by World Health Organization
+         subtypes},
+\end{Verbatim}
+\emph{richtig}
+\begin{Verbatim}[commandchars=\\\(\)]
+title = {2016 (\color(red){)US(\color(red)}) lymphoid malignancy statistics by World Health Organization
+         subtypes},
+\end{Verbatim}
+Durch die zusätzlichen geschweiften Klammern um \texttt{US} wird erreicht, dass der Titel
+auch korrekt wiedergegeben wird. Andernfalls wird bei englischsprachigen
+Referenzen durch \hologo{BibTeX} die gesamte Zeichenkette zwischen den
+\"au{\ss}ersten Klammern \texttt{\{\ldots \}} in Kleinschrift gesetzt und
+\emph{nur der erste} Buchstabe gro{\ss} gesetzt (gewünschtes Verhalten). Es empfiehlt sich daher händisch in
+der
+\verb|.bib|-Datei alle Titel Einträge sorgfältig zu überprüfen, auch um
+gegebenenfalls überflüssige Klammern \emph{zu entfernen}\footnote{Abhängig vom
+Tool (Zotero, Jabref, Endnote, Google Scholar etc.) mit dem Referenzen gesammelt und später in \hologo{BibTeX}-Einträge
+umgewandelt werden, wird eventuell für alle im Titel vorkommenden Wörter
+Gro{\ss}- und Kleinschreibung forciert; in obigem Beispiel bspw.\ \verb|{W}orld {H}ealth {O}rganization|.},
+so dass ein einheitliches Bild im Literaturverzeichnis gewährleistet ist.
+
+\section{Technisches}
+Die Datei \verb|human.dbj| kann in einem Texteditor manuell angepasst
+werden\footnote{%
+\url{https://ftp.fau.de/ctan/macros/latex/contrib/custom-bib/merlin.pdf}} um
+gegebenenfalls Änderungen am Stil der Referenzen im Literaturverzeichnis
+vorzunehmen.
+%TODO: Zusammenhang mit makebst erläutern
+
+
+\section{To Do}
+\begin{itemize}
+ \item Fertigstellung der Dokumentation
+ \item \sout{Hinweis auf inoffiziellen Status, changelog und Version in Stil
+Datei
+einfügen}
+ \item Auflage: Angabe nur ab 2.~Auflage aufwärts
+ \item korrekte Angabe der Auflage, d.h.\ "`2.~Aufl."', "`2.~erw. Aufl."', "`2nd
+ed."'
+ \item Erstellen eines eigenen Eintrags für Webseiten (zum Beispiel
+\verb|@website|), mit Feldern für \emph{URL} (alternativ \emph{short URL} und
+\emph{hostname}) sowie Felder für \emph{Aufruf am}\footnote{date retrieved} und
+\emph{Aktualisiert am}\footnote{date of last revision} (v0.2). \sout{Es gilt zu
+beachten,
+dass die URL nicht im typewriter Font angegeben werden soll. Eventuell muss das
+Paket hyperref bzw. url sinnvollerweise geladen werden.}
+\item korrekter Umgang mit Journalabkürzungen
+\item Hinweis (in press) bzw.\ (im Druck) mit DOI f\"ur im Druck befindliche und
+vorab elektronisch ver\"offentlichte Artikel (v0.3)
+\end{itemize}
+
+
+\newpage
+\label{sec:Literaturverzeichnis}
+\bibliography{example}
+\nocite{*}
+
+%\includepdf[pages={-}]{zitierrichtinien_fuer_die_dissertation_formblatt9.pdf}
+
+\end{document}
