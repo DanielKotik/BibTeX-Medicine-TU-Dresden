@@ -35,7 +35,7 @@ Beispiel: Webseiten}
 
 \usepackage[%
    breaklinks            % Links ueberstehen Zeilenumbruch
-  ,ocgcolorlinks         % Links erhalten Farben statt Kaesten; im Druck werden
+  ,colorlinks            % Links erhalten Farben statt Kaesten
                          % keine bunten Farben verwendet
   ,citecolor=blue        % Farbe fuer Zitate
   ,linkcolor=blue        % beeinflusst Inhaltsverzeichnis und Seitenzahlen
@@ -88,9 +88,9 @@ angenommen.
 
 Die Stildatei \verb|humanmutationTUD.bst| unterstützt folgende Literaturtypen:
 \verb|article|, \verb|book|, \verb|booklet|, \verb|inbook|,
-\verb|incollection|, \verb|inproceedings|(=\verb|conference|), \verb|manual|,
-\verb|mastersthesis|, \verb|misc|, \verb|phdthesis|, \verb|proceedings|,
-\verb|techreport|, \verb|unpublished|.
+\verb|incollection|, \verb|inproceedings|(=\verb|conference|),
+\verb|mastersthesis|, \verb|phdthesis|, \verb|proceedings|, \verb|unpublished|,
+\verb|techreport|, \verb|manual|, \verb|misc|.
 
 %TODO: Angaben, welche Typen besonders durch den Stil beeinflusst werden (book,
 %inpriceedings, webiste, unpublished). --> neuer Typ 'website'
@@ -192,8 +192,10 @@ die sprachlichen Unterschiede in der Bibliographie beim Zitieren von
 Sammelb\"anden verdeutlicht. Auch hier gilt, dass die Angabe von
 \verb|language={ngerman}| im ersten Eintrag notwendig, die Angabe von
 \verb|language={english}| im zweiten Eintrag hingegen nicht zwingend
-erforderlich ist. Das Feld \verb|note| ist optional. Die Zeichenkette im Feld \verb|booktitle| wird sprachunabhängig unverändert in der Bibliographie wiedergegeben
-(d.h.\ keine Veränderung der Gro{\ss}- und Kleinschreibung wie bei \verb|title| im Falle von \verb|language={english}|).
+erforderlich ist. Das Feld \verb|note| ist optional. Die Zeichenkette im Feld
+\verb|booktitle| wird sprachunabhängig unverändert in der Bibliographie
+wiedergegeben (d.h.\ keine Veränderung der Gro{\ss}- und Kleinschreibung wie bei
+\verb|title| im Falle von \verb|language={english}|).
 
 \cprotect{\noindent\makebox[1.0\textwidth][c]}{%
 \small
@@ -315,8 +317,9 @@ Referenzen durch \hologo{BibTeX} die gesamte Zeichenkette zwischen den
 der
 \verb|.bib|-Datei alle Titel Einträge sorgfältig zu überprüfen, auch um
 gegebenenfalls überflüssige Klammern \emph{zu entfernen}\footnote{Abhängig vom
-Tool (Zotero, Jabref, Endnote, Google Scholar etc.) mit dem Referenzen gesammelt und später in \hologo{BibTeX}-Einträge
-umgewandelt werden, wird eventuell für alle im Titel vorkommenden Wörter
+Tool mit welchem Referenzen gesammelt und später in \hologo{BibTeX}-Einträge
+umgewandelt werden (Zotero, Jabref, Endnote, Google Scholar etc.), wird
+eventuell für alle im Titel vorkommenden Wörter
 Gro{\ss}- und Kleinschreibung forciert; in obigem Beispiel bspw.\ \verb|{W}orld {H}ealth {O}rganization|.},
 so dass ein einheitliches Bild im Literaturverzeichnis gewährleistet ist.
 
