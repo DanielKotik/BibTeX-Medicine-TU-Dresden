@@ -89,6 +89,7 @@ ENTRY
     title
     type
     url
+    urldate
     volume
     year
   }
@@ -571,6 +572,21 @@ FUNCTION {format.note}
     }
   if$
 }
+        
+FUNCTION {format.url}
+{ url empty$
+  { "" }
+  {   
+    ". \urlprefix\url{" * url * "}" *
+    urldate empty$
+    { "there is url but no urldate in " cite$ * warning$ }
+    { 
+      "~({Aufruf am:} " * urldate * ")" *
+      }
+    if$
+    }
+    if$
+    }        
 
 % This function converts all characters of the string given in the title entry to 
 % lower case all letters except the very first character. For language 'ngerman' 
@@ -1573,7 +1589,7 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\url}[1]{\texttt{#1}}"
   write$ newline$
-  "\providecommand{\urlprefix}{URL }"
+  "\providecommand{\urlprefix}{URL: }"
   write$ newline$
   "\providecommand{\selectlanguage}[1]{\relax}"
   write$ newline$
