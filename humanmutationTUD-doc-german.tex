@@ -260,7 +260,7 @@ zusätzliches Feld \verb|doi={...}| zur Angabe der DOI (\textbf{D}igital
 \textbf{O}bject \textbf{I}dentifier) bereitgestellt.
 
 %TODO: Ausgabe der doi in der Quelle: "`DOI: ...."'
-%TODO: url mit der DOI verlinken
+%TODO: url mit der DOI verlinken  url = {https://doi.org/10.1093/qjmed/hcx091},
 
 % \footnote{Unveröffentlichte Artikel, welche auf PubMed gelistet
 % sind, können mit \url{ http://www.bioinformatics.org/texmed/} ansatzweise in
@@ -269,28 +269,39 @@ zusätzliches Feld \verb|doi={...}| zur Angabe der DOI (\textbf{D}igital
 
 \cprotect{\noindent\makebox[1.0\textwidth][c]}{%
 \small
-\begin{minipage}[t]{1.2\textwidth}
-    \begin{minipage}[t][6cm][c]{0.52\textwidth}
+\begin{minipage}[t]{1.25\textwidth}
+    \begin{minipage}[t][8.8cm][c]{0.525\textwidth}
       %\hrulefill
       \begin{singlespace}
       \begin{Verbatim}[frame=single,commandchars=\\\(\)]
 @article{vonschulthess2010,
-   author   = {von Schulthess, G. K. and Burger, C.},
-   title    = {Integrating imaging modalities: what
+   author  = {von Schulthess, G. K. and Burger, C.},
+   title   = {Integrating imaging modalities: what
                makes sense from a workflow perspective?},
-   journal  = {Eur J Nucl Med Mol Imaging},
-   volume   = {37},
-   number   = {5},
-   pages    = {980-990},
-   month    = 10,
-   year     = {2010}
+   journal = {Eur J Nucl Med Mol Imaging},
+   volume  = {37},
+   number  = {5},
+   pages   = {980-990},
+   month   = 10,
+   year    = {2010}
+}
+
+@unpublished{Cronin2017,
+   author = {Cronin, O. and Keohane, D. M. and Molloy, M. G.
+             and Shanahan, F.},
+   title  = {The effect of exercise interventions on
+              inflammatory biomarkers in healthy, physically
+              inactive subjects: a systematic review},
+   (\color(red)doi    = {10.1093/qjmed/hcx091},)
+   year   = {2017},
+   month  = {May}
 }
      \end{Verbatim}
      \end{singlespace}
      %\hrulefill
     \end{minipage}
     \hfill
-    \begin{minipage}[t][6cm][c]{0.45\textwidth}
+    \begin{minipage}[t][8.8cm][c]{0.45\textwidth}
       %\hrulefill
       \bibliographyjournals{example}
       \bibliographystylejournals{humanmutationTUD}
