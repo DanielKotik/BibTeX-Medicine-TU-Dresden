@@ -1586,11 +1586,7 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\urlprefix}{URL: }"
   write$ newline$
-  "\expandafter\ifx\csname urlstyle\endcsname\relax"
-  write$ newline$
-  "  \providecommand{\doi}[1]{DOI: \discretionary{}{}{}#1}\else"
-  write$ newline$
-  "  \providecommand{\doi}{[in press] DOI: \discretionary{}{}{}\begingroup \Url}\fi"
+  "\providecommand{\doi}[1]{[in press] DOI:~#1}"
   write$ newline$
   "\providecommand{\selectlanguage}[1]{\relax}"
   write$ newline$
