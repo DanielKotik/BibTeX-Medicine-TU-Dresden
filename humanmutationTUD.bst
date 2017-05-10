@@ -544,7 +544,7 @@ FUNCTION {format.doi}
     { "" }
     {
       new.block
-      "\doi{" doi * "}" *
+      "\doiprefix\doi{" doi * "}" *
     }
   if$
 }
@@ -1584,9 +1584,11 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\url}[1]{#1}"
   write$ newline$
-  "\providecommand{\urlprefix}{URL: }"
+  "\providecommand{\urlprefix}{URL:~}"
   write$ newline$
-  "\providecommand{\doi}[1]{[in press] DOI:~#1}"
+  "\providecommand{\doiprefix}{[in press] DOI:~}"
+  write$ newline$
+  "\providecommand{\doi}[1]{#1}"
   write$ newline$
   "\providecommand{\selectlanguage}[1]{\relax}"
   write$ newline$
