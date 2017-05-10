@@ -253,15 +253,21 @@ wiedergegeben (d.h.\ keine Veränderung der Gro{\ss}- und Kleinschreibung wie be
 
 \subsection{Zitieren von (unver\"offentlichten) Artikeln}
 Anhand von~\citejournals{vonschulthess2010} wird das Zitieren eines
-bereits veröffentlichten Artikels und von~\citejournals{Cronin2017} eines sich
-noch im Druck befindlichen Artikels
+bereits veröffentlichten Artikels und von~\citejournals{Cronin2017} eines noch
+unveröffentlichten Artikels
 verdeutlicht. Für den Literaturtyp \verb|unpublished| wird ein
 zusätzliches Feld \verb|doi={...}| zur Angabe der DOI (\textbf{D}igital
-\textbf{O}bject \textbf{I}dentifier) bereitgestellt.
+\textbf{O}bject \textbf{I}dentifier) bereitgestellt\footnote{Das Vorhandensein
+des Feldes \verb|doi={...}| bleibt für alle anderen Literaturtypen ohne
+Wirkung.}. Das optionale \verb|language| Feld beeinflusst den Hinweis auf einen
+sich im Druck befindlichen, d.h.\ bisher unveröffentlichten Artikel ("`[im
+Druck]"' für \verb|ngerman| bzw.\ "`[in press]"' für die englische und alle
+anderen Sprachen).
 
 %TODO: url mit der DOI verlinken (url = {https://doi.org/10.1093/qjmed/hcx091},)
 %TODO: optionales Feld 'journal' bereitstellen (journal = {QJM},)
 %TODO: Warnung ausgeben, falls 'doi' entry in 'unpuplished' leer oder fehlt
+%TODO: KEINE Warnung ausgeben bei fehlendem 'note' Feld in 'unbuplished'
 
 % \footnote{Unveröffentlichte Artikel, welche auf PubMed gelistet
 % sind, können mit \url{ http://www.bioinformatics.org/texmed/} ansatzweise in
