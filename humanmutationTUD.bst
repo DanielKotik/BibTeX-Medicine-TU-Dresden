@@ -1295,9 +1295,9 @@ FUNCTION {unpublished}
   date.block
   format.title "title" output.check
   new.block
-  format.doi output
+  format.doi "doi" output.check
   new.block
-  format.note "note" output.check
+  format.note output
   fin.entry
 }
 
