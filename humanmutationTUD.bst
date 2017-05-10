@@ -1297,6 +1297,8 @@ FUNCTION {unpublished}
   date.block
   format.title "title" output.check
   new.block
+  journal "journal" output.check
+  add.blank
   format.doi "doi" output.check
   new.block
   format.note output
