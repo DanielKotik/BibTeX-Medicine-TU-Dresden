@@ -70,6 +70,7 @@ ENTRY
     author
     booktitle
     chapter
+    doi
     edition
     editor
     eid
@@ -535,6 +536,15 @@ FUNCTION {format.editors}
       get.bbl.editor
    "(" swap$ * ")" *
       *
+    }
+  if$
+}
+FUNCTION {format.doi}
+{ doi empty$
+    { "" }
+    {
+      new.block
+      "\doi{" doi * "}" *
     }
   if$
 }
@@ -1278,6 +1288,7 @@ FUNCTION {unpublished}
   format.date "year" output.check
   date.block
   format.title "title" output.check
+  format.doi output
   new.block
   format.note "note" output.check
   fin.entry
@@ -1573,7 +1584,13 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\url}[1]{\texttt{#1}}"
   write$ newline$
-  "\providecommand{\urlprefix}{URL }"
+  "\providecommand{\urlprefix}{URL: }"
+  write$ newline$
+  "\expandafter\ifx\csname urlstyle\endcsname\relax"
+  write$ newline$
+  "  \providecommand{\doi}[1]{DOI: \discretionary{}{}{}#1}\else"
+  write$ newline$
+  "  \providecommand{\doi}{[in press] DOI: \discretionary{}{}{}\begingroup \Url}\fi"
   write$ newline$
   "\providecommand{\selectlanguage}[1]{\relax}"
   write$ newline$
