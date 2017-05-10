@@ -23,7 +23,7 @@ headsep=10mm, footskip=12mm}
 \usepackage{multibib}
 \newcites{books,incoll,journals,websites}{Beispiel: Monographie,%
 Beispiel: Sammelb\"ande,%
-Beispiel: Artikel,%
+Beispiel: Zeitschriftenartikel,%
 Beispiel: Webseiten}
 \usepackage{natbib}
 \setlength{\bibhang}{0em}     % Quellen ohne hängenden Einzug im Literatur-
@@ -259,9 +259,9 @@ verdeutlicht. Für den Literaturtyp \verb|unpublished| wird ein
 zusätzliches Feld \verb|doi={...}| zur Angabe der DOI (\textbf{D}igital
 \textbf{O}bject \textbf{I}dentifier) bereitgestellt.
 
-%TODO: Ausgabe der doi in der Quelle: "`DOI: ...."'
-%TODO: url mit der DOI verlinken  url = {https://doi.org/10.1093/qjmed/hcx091},
-%TODO: optionales Feld 'journal' bereitstellen
+%TODO: url mit der DOI verlinken (url = {https://doi.org/10.1093/qjmed/hcx091},)
+%TODO: optionales Feld 'journal' bereitstellen (journal = {QJM},)
+%TODO: Warnung ausgeben, falls 'doi' entry in 'unpuplished' leer oder fehlt
 
 % \footnote{Unveröffentlichte Artikel, welche auf PubMed gelistet
 % sind, können mit \url{ http://www.bioinformatics.org/texmed/} ansatzweise in
@@ -275,6 +275,17 @@ zusätzliches Feld \verb|doi={...}| zur Angabe der DOI (\textbf{D}igital
       %\hrulefill
       \begin{singlespace}
       \begin{Verbatim}[frame=single,commandchars=\\\(\)]
+@unpublished{Cronin2017,
+   author = {Cronin, O. and Keohane, D. M. and Molloy, M. G.
+             and Shanahan, F.},
+   title  = {The effect of exercise interventions on
+              inflammatory biomarkers in healthy, physically
+              inactive subjects: a systematic review},
+   (\color(red)doi    = {10.1093/qjmed/hcx091},)
+   year   = {2017},
+   month  = {May}
+}
+
 @article{vonschulthess2010,
    author  = {von Schulthess, G. K. and Burger, C.},
    title   = {Integrating imaging modalities: what
@@ -285,17 +296,6 @@ zusätzliches Feld \verb|doi={...}| zur Angabe der DOI (\textbf{D}igital
    pages   = {980-990},
    month   = 10,
    year    = {2010}
-}
-
-@unpublished{Cronin2017,
-   author = {Cronin, O. and Keohane, D. M. and Molloy, M. G.
-             and Shanahan, F.},
-   title  = {The effect of exercise interventions on
-              inflammatory biomarkers in healthy, physically
-              inactive subjects: a systematic review},
-   (\color(red)doi    = {10.1093/qjmed/hcx091},)
-   year   = {2017},
-   month  = {May}
 }
      \end{Verbatim}
      \end{singlespace}
