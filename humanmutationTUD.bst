@@ -344,6 +344,13 @@ FUNCTION {bbl.chapter}
   if$
 }
 
+FUNCTION {bbl.eprint}
+{ fix.language "ngerman" =
+  { "[im Druck] "}
+  { "[in press] "}
+  if$
+}
+
 FUNCTION {bbl.techrep}
 { fix.language "ngerman" =
   { "{Technischer Bericht}" }
@@ -543,11 +550,10 @@ FUNCTION {format.doi}
 { doi empty$
     { "" }
     {
-      new.block
-      "\doiprefix\doi{" doi * "}" *
+      bbl.eprint "\doiprefix\doi{" doi * "}" * *
     }
   if$
-}
+}  
 FUNCTION {select.language}
 { duplicate$ empty$
     'pop$
@@ -1288,6 +1294,7 @@ FUNCTION {unpublished}
   format.date "year" output.check
   date.block
   format.title "title" output.check
+  new.block
   format.doi output
   new.block
   format.note "note" output.check
@@ -1586,7 +1593,7 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\urlprefix}{URL:~}"
   write$ newline$
-  "\providecommand{\doiprefix}{[in press] DOI:~}"
+  "\providecommand{\doiprefix}{DOI:~}"
   write$ newline$
   "\providecommand{\doi}[1]{#1}"
   write$ newline$
