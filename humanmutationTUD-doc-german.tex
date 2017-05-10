@@ -151,7 +151,8 @@ Sammelbände, Artikel und Webseiten) korrekt unter Verwendung der Stildatei
 \verb|humanmutationTUD.bst| zitiert werden.
 \subsection{Zitieren von Büchern und Monographien}
 Da es sich bei \citebooks{Schuhmacher2005} um ein deutsches Werk handelt, ist
-die Angabe von \verb|language={ngerman}| im Eintrag erforderlich.
+die Angabe von \verb|language={ngerman}| im entsprechenden Eintrag der
+\verb|.bib|~Datei erforderlich.
 %TODO: Wird für ein englisches Buch der Titel verändert (Gross/Kleinschreibung)?
 
 \cprotect{\noindent\makebox[1.0\textwidth][c]}{%
@@ -188,14 +189,17 @@ die Angabe von \verb|language={ngerman}| im Eintrag erforderlich.
 
 \subsection{Zitieren von Arbeiten in Sammelbänden}
 Anhand von~\citeincoll{incollection_a} und~\citeincoll{incollection_b} werden
-die sprachlichen Unterschiede in der Bibliographie beim Zitieren von
+die sprachbedingten Unterschiede in der Bibliographie beim Zitieren von
 Sammelb\"anden verdeutlicht. Auch hier gilt, dass die Angabe von
 \verb|language={ngerman}| im ersten Eintrag notwendig, die Angabe von
 \verb|language={english}| im zweiten Eintrag hingegen nicht zwingend
-erforderlich ist. Das Feld \verb|note| ist optional. Die Zeichenkette im Feld
-\verb|booktitle| wird sprachunabhängig unverändert in der Bibliographie
-wiedergegeben (d.h.\ keine Veränderung der Gro{\ss}- und Kleinschreibung wie bei
-\verb|title| im Falle von \verb|language={english}|).
+erforderlich ist (Englisch ist Standard). Das Feld \verb|note| ist generell
+optional. Die Zeichenkette im Feld
+\verb|booktitle| wird unverändert in der Bibliographie
+wiedergegeben (d.h.\ keine sprachbedingte Veränderung der Gro{\ss}- und
+Kleinschreibung wie bei
+\verb|title|, aber korrekte Silbentrennung entsprechend der Sprache im
+\verb|language| Feld).
 
 \cprotect{\noindent\makebox[1.0\textwidth][c]}{%
 \small
@@ -298,7 +302,7 @@ verbesserter Form~\cite{teras2016_RICHTIG}. Beide Zitate referenzieren
 tats\"achlich die gleiche Quelle, nur das beim zweiten Zitat der
 Titel auch \emph{korrekt} in der Bibliographie angezeigt wird. Der
 marginale Unterschied des entsprechenden Eintrages
-in der \verb|.bib| Datei besteht im Folgendem:\\\\
+in der \verb|.bib|~Datei besteht im Folgendem:\\\\
 \emph{falsch}
 \begin{Verbatim}
 title = {2016 US lymphoid malignancy statistics by World Health Organization
@@ -315,7 +319,7 @@ Referenzen durch \hologo{BibTeX} die gesamte Zeichenkette zwischen den
 \"au{\ss}ersten Klammern \texttt{\{\ldots \}} in Kleinschrift gesetzt und
 \emph{nur der erste} Buchstabe gro{\ss} gesetzt (gewünschtes Verhalten). Es empfiehlt sich daher händisch in
 der
-\verb|.bib|-Datei alle Titel Einträge sorgfältig zu überprüfen, auch um
+\verb|.bib|~Datei alle Titel Einträge sorgfältig zu überprüfen, auch um
 gegebenenfalls überflüssige Klammern \emph{zu entfernen}\footnote{Abhängig vom
 Tool mit welchem Referenzen gesammelt und später in \hologo{BibTeX}-Einträge
 umgewandelt werden (Zotero, Jabref, Endnote, Google Scholar etc.), wird
@@ -344,13 +348,13 @@ ed."'
  \item Erstellen eines eigenen Eintrags für Webseiten (zum Beispiel
 \verb|@website|), mit Feldern für \emph{URL} (alternativ \emph{short URL} und
 \emph{hostname}) sowie Felder für \emph{Aufruf am}\footnote{date retrieved} und
-\emph{Aktualisiert am}\footnote{date of last revision} (v0.2). \sout{Es gilt zu
+\emph{Aktualisiert am}\footnote{date of last revision} (v0.3). \sout{Es gilt zu
 beachten,
 dass die URL nicht im typewriter Font angegeben werden soll. Eventuell muss das
 Paket hyperref bzw. url sinnvollerweise geladen werden.}
 \item korrekter Umgang mit Journalabkürzungen
 \item Hinweis (in press) bzw.\ (im Druck) mit DOI f\"ur im Druck befindliche und
-vorab elektronisch ver\"offentlichte Artikel (v0.3)
+vorab elektronisch ver\"offentlichte Artikel (v0.2)
 \end{itemize}
 
 
