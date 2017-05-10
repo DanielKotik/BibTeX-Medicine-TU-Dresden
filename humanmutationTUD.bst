@@ -1582,7 +1582,7 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\natexlab}[1]{#1}"
   write$ newline$
-  "\providecommand{\url}[1]{\texttt{#1}}"
+  "\providecommand{\url}[1]{#1}"
   write$ newline$
   "\providecommand{\urlprefix}{URL: }"
   write$ newline$
