@@ -546,6 +546,7 @@ FUNCTION {format.editors}
     }
   if$
 }
+    
 FUNCTION {format.doi}
 { doi empty$
     { "" }
@@ -553,7 +554,8 @@ FUNCTION {format.doi}
       bbl.eprint "\doiprefix\doi{" doi * "}" * *
     }
   if$
-}  
+}
+    
 FUNCTION {select.language}
 { duplicate$ empty$
     'pop$
