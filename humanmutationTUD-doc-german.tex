@@ -50,7 +50,7 @@ Beispiel: Webseiten}
 %opening
 \title{Anpassungen des Stils \emph{Human Mutation} an die
 Richtlinien der Medizinischen Fakultät Carl Gustav Carus, TU Dresden}
-\subtitle{v0.1 vom 5.~Mai 2017}
+\subtitle{v0.3 vom 5.~Mai 2017}
 \author{Daniel Kotik\\
 \large\url{https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden}\\
 \large\url{daniel.kotik85@gmail.com}}
@@ -290,6 +290,8 @@ verdeutlicht.
 \subsection{Zitieren von Webseiten}
 Hier zitieren wir \citeweb{humanmutationSchneider}.
 %TODO: Zitierung von zwei Webseiten: einmal mit short URL, einmal gewöhnlich.
+%TODO: lastchecked erläutern --> notwendige Angabe --> Warnung wird ausgegeben
+%TODO: lastrevised erklären --> optional
 
 \cprotect{\noindent\makebox[1.0\textwidth][c]}{%
 \small
@@ -297,13 +299,15 @@ Hier zitieren wir \citeweb{humanmutationSchneider}.
     \begin{minipage}[t][5cm][c]{0.527\textwidth}
       %\hrulefill
       \begin{singlespace}
-      \begin{Verbatim}[frame=single,commandchars=\\\(\)]
+      \begin{Verbatim}[frame=single]
 @webpage{humanmutationSchneider,
 author  = {Schneider, Thomas},
 year    = 1998,
-title   = {..... `humanmutation' bibliography style},
+title   = {\hologo{BibTeX} `humanmutation' bibliography
+           style},
 url     = {https://schneider.ncifcrf.gov/latex.html},
-urldate = {05.05.2017}
+lastchecked = {05.05.2017},
+lastrevised = {27.05.2016}
 }
      \end{Verbatim}
      \end{singlespace}
