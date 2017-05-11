@@ -23,7 +23,7 @@ headsep=10mm, footskip=12mm}
 \usepackage{multibib}
 \newcites{books,incoll,journals,websites}{Beispiel: Monographie,%
 Beispiel: Sammelb\"ande,%
-Beispiel: Artikel,%
+Beispiel: Zeitschriftenartikel,%
 Beispiel: Webseiten}
 \usepackage{natbib}
 \setlength{\bibhang}{0em}     % Quellen ohne hängenden Einzug im Literatur-
@@ -43,14 +43,13 @@ Beispiel: Webseiten}
   ]
   {hyperref}             % PDF automatisch mit Links versehen und weitere
                          % Hypertext-Funktionalitaet ermoeglichen
-%\usepackage{url}
 \def\UrlFont{\sffamily}  % URLs in Sans Serif
 
 
 %opening
 \title{Anpassungen des Stils \emph{Human Mutation} an die
 Richtlinien der Medizinischen Fakultät Carl Gustav Carus, TU Dresden}
-\subtitle{v0.1 vom 5.~Mai 2017}
+\subtitle{v0.2 vom 11.~Mai 2017}
 \author{Daniel Kotik\\
 \large\url{https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden}\\
 \large\url{daniel.kotik85@gmail.com}}
@@ -122,8 +121,14 @@ definieren:
 
 \bibliographystyle{humanmutationTUD}  % angepasste Bibliographiestildatei ohne
                                       % Endung '.bst' angeben
-\usepackage{url}         % ODER aber \usepackage[...]{hyperref} für farbige und
-                         % klickbare Links im PDF
+\usepackage[%
+  breaklinks,            % Links ueberstehen Zeilenumbruch
+  colorlinks,            % Links erhalten Farben statt Kaesten
+  citecolor=blue,        % Farbe fuer Zitate
+  linkcolor=blue,        % beeinflusst Inhaltsverzeichnis und Seitenzahlen
+  urlcolor=blue          % Farbe fuer URLs
+]{hyperref}              % PDF automatisch mit Links versehen und weitere
+                         % Hypertext-Funktionalitaet ermoeglichen
 \def\UrlFont{\sffamily}  % verhindert URLs in Schreibmaschinenschrift
 \end{Verbatim}
 \end{singlespace}
@@ -255,36 +260,62 @@ Kleinschreibung wie bei
 \end{minipage}
 }
 
-\subsection{Zitieren von Artikeln}
-Anhand von~\citejournals{vonschulthess2010} wird das Zitieren eines Artikels
-verdeutlicht.
+\subsection{Zitieren von (unver\"offentlichten) Artikeln}
+Anhand von~\citejournals{vonschulthess2010} wird das Zitieren eines
+bereits veröffentlichten Artikels und von~\citejournals{Cronin2017} eines noch
+unveröffentlichten Artikels
+verdeutlicht. Für den Literaturtyp \verb|unpublished| wird ein
+zusätzliches Feld \verb|doi={...}| zur Angabe des DOI (\textbf{D}igital
+\textbf{O}bject \textbf{I}dentifier) bereitgestellt\footnote{Das Vorhandensein
+des Feldes \verb|doi={...}| bleibt für alle anderen Literaturtypen ohne
+Wirkung.}. Das optionale \verb|language| Feld beeinflusst den Hinweis auf einen
+sich im Druck befindlichen, d.h.\ bisher unveröffentlichten Artikel ("`[im
+Druck]"' für \verb|ngerman| bzw.\ "`[in press]"' für die englische und alle
+anderen Sprachen). Der DOI wird automatisch dem DOI Resolver
+\url{https://dx.doi.org/} übergeben und verlinkt. Ein eventuell vorhandenes
+Feld \verb|month| bleibt ohne Wirkung.
 
-%TODO: Es fehlt ein preprint Artikel!
+% \footnote{Unveröffentlichte Artikel, welche auf PubMed gelistet
+% sind, können mit \url{ http://www.bioinformatics.org/texmed/} ansatzweise in
+% Bibtex umgewandelt werden.}
+
 
 \cprotect{\noindent\makebox[1.0\textwidth][c]}{%
 \small
-\begin{minipage}[t]{1.2\textwidth}
-    \begin{minipage}[t][6cm][c]{0.52\textwidth}
+\begin{minipage}[t]{1.25\textwidth}
+    \begin{minipage}[t][9cm][c]{0.53\textwidth}
       %\hrulefill
       \begin{singlespace}
       \begin{Verbatim}[frame=single,commandchars=\\\(\)]
+@unpublished{Cronin2017,
+   author  = {Cronin, O. and Keohane, D. M. and Molloy, M. G.
+              and Shanahan, F.},
+   title   = {The effect of exercise interventions on
+             inflammatory biomarkers in healthy, physically
+             inactive subjects: a systematic review},
+   (\color(red)doi     = {10.1093/qjmed/hcx091},)
+   journal = {QJM},
+   year    = {2017},
+   month   = {May}
+}
+
 @article{vonschulthess2010,
-   author   = {von Schulthess, G. K. and Burger, C.},
-   title    = {Integrating imaging modalities: what
-               makes sense from a workflow perspective?},
-   journal  = {Eur J Nucl Med Mol Imaging},
-   volume   = {37},
-   number   = {5},
-   pages    = {980-990},
-   month    = 10,
-   year     = {2010}
+   author  = {von Schulthess, G. K. and Burger, C.},
+   title   = {Integrating imaging modalities: what
+              makes sense from a workflow perspective?},
+   journal = {Eur J Nucl Med Mol Imaging},
+   volume  = {37},
+   number  = {5},
+   pages   = {980-990},
+   month   = 10,
+   year    = {2010}
 }
      \end{Verbatim}
      \end{singlespace}
      %\hrulefill
     \end{minipage}
     \hfill
-    \begin{minipage}[t][6cm][c]{0.45\textwidth}
+    \begin{minipage}[t][9cm][c]{0.45\textwidth}
       %\hrulefill
       \bibliographyjournals{example}
       \bibliographystylejournals{humanmutationTUD}
@@ -353,8 +384,9 @@ beachten,
 dass die URL nicht im typewriter Font angegeben werden soll. Eventuell muss das
 Paket hyperref bzw. url sinnvollerweise geladen werden.}
 \item korrekter Umgang mit Journalabkürzungen
-\item Hinweis (in press) bzw.\ (im Druck) mit DOI f\"ur im Druck befindliche und
-vorab elektronisch ver\"offentlichte Artikel (v0.2)
+\item \sout{Hinweis (in press) bzw.\ (im Druck) mit DOI f\"ur im Druck
+befindliche und
+vorab elektronisch ver\"offentlichte Artikel (v0.2)}
 \end{itemize}
 
 

@@ -5,7 +5,7 @@
 % Please contact me at https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden
 % if your find erros or ask for feature requests.
 %
-% This is version v0.1, released on May 5, 2017.
+% This is version v0.2, released on May 11, 2017.
  
  
 % ---------- original docstring from the bst file as output of the makebst utility
@@ -70,6 +70,7 @@ ENTRY
     author
     booktitle
     chapter
+    doi
     edition
     editor
     eid
@@ -343,6 +344,13 @@ FUNCTION {bbl.chapter}
   if$
 }
 
+FUNCTION {bbl.eprint}
+{ fix.language "ngerman" =
+  { "[im Druck] "}
+  { "[in press] "}
+  if$
+}
+
 FUNCTION {bbl.techrep}
 { fix.language "ngerman" =
   { "{Technischer Bericht}" }
@@ -538,6 +546,16 @@ FUNCTION {format.editors}
     }
   if$
 }
+    
+FUNCTION {format.doi}
+{ doi empty$
+    { "" }
+    {
+      bbl.eprint "\doiprefix\doi{" doi * "}" * *
+    }
+  if$
+}
+    
 FUNCTION {select.language}
 { duplicate$ empty$
     'pop$
@@ -1279,7 +1297,11 @@ FUNCTION {unpublished}
   date.block
   format.title "title" output.check
   new.block
-  format.note "note" output.check
+  journal "journal" output.check
+  add.blank
+  format.doi "doi" output.check
+  new.block
+  format.note output
   fin.entry
 }
 
@@ -1571,9 +1593,14 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\natexlab}[1]{#1}"
   write$ newline$
-  "\providecommand{\url}[1]{\texttt{#1}}"
+  "\providecommand{\url}[1]{#1}"
   write$ newline$
-  "\providecommand{\urlprefix}{URL }"
+  "\providecommand{\urlprefix}{URL:~}"
+  write$ newline$
+  "\providecommand{\doiprefix}{DOI:~}"
+  write$ newline$
+ % "\providecommand{\doi}[1]{#1}"
+  "\providecommand{\doi}[1]{\href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}"
   write$ newline$
   "\providecommand{\selectlanguage}[1]{\relax}"
   write$ newline$
