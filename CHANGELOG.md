@@ -1,10 +1,7 @@
 # Change Log
 All notable changes to the file 'humanmutationTUD.bst' will be documented here.
 
-## [Unreleased]
-### Added
-
-## [v0.2] - 2017-05-10
+## [v0.2] - 2017-05-11
 ### Added
 - Command '\doi' providing a link to the DOI resolver for yet unpublished articles
 - Function 'bbl.eprint' providing notice '[im Druck]' or '[in press]'
