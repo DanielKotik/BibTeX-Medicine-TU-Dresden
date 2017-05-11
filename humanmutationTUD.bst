@@ -5,7 +5,7 @@
 % Please contact me at https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden
 % if your find erros or ask for feature requests.
 %
-% This is version v0.1, released on May 5, 2017.
+% This is version v0.2, released on May 11, 2017.
  
  
 % ---------- original docstring from the bst file as output of the makebst utility
