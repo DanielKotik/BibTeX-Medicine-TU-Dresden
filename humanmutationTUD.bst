@@ -1599,7 +1599,8 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\doiprefix}{DOI:~}"
   write$ newline$
-  "\providecommand{\doi}[1]{#1}"
+ % "\providecommand{\doi}[1]{#1}"
+  "\providecommand{\doi}[1]{\href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}"
   write$ newline$
   "\providecommand{\selectlanguage}[1]{\relax}"
   write$ newline$
