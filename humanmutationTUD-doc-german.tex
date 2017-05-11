@@ -21,7 +21,7 @@ headsep=10mm, footskip=12mm}
 
 \usepackage[english,main=ngerman]{babel}
 \usepackage{multibib}
-\newcites{books,incoll,journals,websites}{Beispiel: Monographie,%
+\newcites{books,incoll,journals,web}{Beispiel: Monographie,%
 Beispiel: Sammelb\"ande,%
 Beispiel: Artikel,%
 Beispiel: Webseiten}
@@ -35,7 +35,7 @@ Beispiel: Webseiten}
 
 \usepackage[%
    breaklinks            % Links ueberstehen Zeilenumbruch
-  ,ocgcolorlinks         % Links erhalten Farben statt Kaesten; im Druck werden
+  ,colorlinks         % Links erhalten Farben statt Kaesten; im Druck werden
                          % keine bunten Farben verwendet
   ,citecolor=blue        % Farbe fuer Zitate
   ,linkcolor=blue        % beeinflusst Inhaltsverzeichnis und Seitenzahlen
@@ -287,8 +287,37 @@ verdeutlicht.
 \end{minipage}
 }
 
-%TODO:\subsection{Zitieren von Webseiten}
+\subsection{Zitieren von Webseiten}
+Hier zitieren wir \citeweb{humanmutationSchneider}.
 %TODO: Zitierung von zwei Webseiten: einmal mit short URL, einmal gewöhnlich.
+
+\cprotect{\noindent\makebox[1.0\textwidth][c]}{%
+\small
+\begin{minipage}[t]{1.2\textwidth}
+    \begin{minipage}[t][5cm][c]{0.527\textwidth}
+      %\hrulefill
+      \begin{singlespace}
+      \begin{Verbatim}[frame=single,commandchars=\\\(\)]
+@webpage{humanmutationSchneider,
+author  = {Schneider, Thomas},
+year    = 1998,
+title   = {..... `humanmutation' bibliography style},
+url     = {https://schneider.ncifcrf.gov/latex.html},
+urldate = {05.05.2017}
+}
+     \end{Verbatim}
+     \end{singlespace}
+     %\hrulefill
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t][5cm][c]{0.45\textwidth}
+      %\hrulefill
+      \bibliographyweb{example}
+      \bibliographystyleweb{humanmutationTUD}
+      %\hrulefill
+    \end{minipage}
+\end{minipage}
+}
 
 \subsection{Fallstricke}
 Hier zitieren wir den Artikel~\cite{teras2016_FALSCH} und noch einmal in
@@ -339,7 +368,7 @@ einfügen}
  \item korrekte Angabe der Auflage, d.h.\ "`2.~Aufl."', "`2.~erw. Aufl."', "`2nd
 ed."'
  \item Erstellen eines eigenen Eintrags für Webseiten (zum Beispiel
-\verb|@website|), mit Feldern für \emph{URL} (alternativ \emph{short URL} und
+\verb|@webpage|), mit Feldern für \emph{URL} (alternativ \emph{short URL} und
 \emph{hostname}) sowie Felder für \emph{Aufruf am}\footnote{date retrieved} und
 \emph{Aktualisiert am}\footnote{date of last revision} (v0.2). \sout{Es gilt zu
 beachten,
