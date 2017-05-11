@@ -1,13 +1,30 @@
 # Change Log
 All notable changes to the file 'humanmutationTUD.bst' will be documented here.
 
+## [Unreleased]
+### Added
+
+## [v0.2] - 2017-05-10
+### Added
+- Command '\doi' providing a link to the DOI resolver for yet unpublished articles
+- Function 'bbl.eprint' providing notice '[im Druck]' or '[in press]'
+- Command '\doiprefix'
+- Entry 'doi', add function 'format.doi'
+- Reference type 'unpublished'
+
+### Changed
+- Command '\urlprefix' to include a colon
+
+### Removed
+- Remove \texttt from definition of command \url
+
 ## [v0.1] - 2017-05-05
 ### Added
 - Some minor fixes.
-- Add description for function 'fix.language'.
-- Add function 'format.in.pages' for printing language specific abbreviations for
+- Description for function 'fix.language'.
+- Function 'format.in.pages' for printing language specific abbreviations for
   'Page(s)' in entries 'incollection' and 'inbook'.
-- Add function 'fix.language' to check for missing or empty entry 'language'. If
+- Function 'fix.language' to check for missing or empty entry 'language'. If
   so, the function sets 'language' to english as deflault.
 
 ### Changed
@@ -26,5 +43,5 @@ All notable changes to the file 'humanmutationTUD.bst' will be documented here.
 ### Added
 - Generate 'humanmutationTUD.bst' as result of makebst utility of Patrick W Daley.
 
-[//]: # (Added, Changed, Fixed, Removed, [Unreleased])
+[//]: # (Added, Changed, Fixed, Removed)
 
