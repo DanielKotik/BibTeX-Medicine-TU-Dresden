@@ -89,7 +89,8 @@ ENTRY
     title
     type
     url
-    urldate
+    lastchecked
+    lastrevised
     volume
     year
   }
@@ -577,16 +578,16 @@ FUNCTION {format.url}
 { url empty$
   { "" }
   {   
-    ". \urlprefix\url{" * url * "}" *
-    urldate empty$
-    { "there is url but no urldate in " cite$ * warning$ }
+    lastchecked empty$
+    { "there is url but no lastchecked in " cite$ * warning$ }
     { 
-      "~({Aufruf am:} " * urldate * ")" *
-      }
-    if$
+      "~[{Aufruf am:} " * lastchecked * "]" *
+      " \urlprefix\url{" * url * "}" *
     }
     if$
-    }        
+   }
+ if$
+}        
 
 % This function converts all characters of the string given in the title entry to 
 % lower case all letters except the very first character. For language 'ngerman' 
@@ -1201,7 +1202,32 @@ FUNCTION {manual}
   format.note output
   fin.entry
 }
-
+FUNCTION {webpage}
+{ output.bibitem
+ format.authors output
+ author format.key output
+ format.date "year" output.check
+ date.block
+ format.title output
+ new.block
+ format.url "" output
+ % new.block
+ % format.note output
+ fin.entry
+ }
+FUNCTION {misc}
+{ output.bibitem
+ format.authors output
+ author format.key output
+ format.date "year" output.check
+ date.block
+ format.title output
+ new.block
+ howpublished "howpublished" bibinfo.check output
+ new.block
+ format.note output
+ fin.entry
+ }
 FUNCTION {mastersthesis}
 { output.bibitem
   format.authors "author" output.check
@@ -1214,20 +1240,6 @@ FUNCTION {mastersthesis}
   bbl.mthesis format.thesis.type output.nonnull
   school "school" bibinfo.warn output
   address "address" bibinfo.check output
-  new.block
-  format.note output
-  fin.entry
-}
-
-FUNCTION {misc}
-{ output.bibitem
-  format.authors output
-  author format.key output
-  format.date "year" output.check
-  date.block
-  format.title output
-  new.block
-  howpublished "howpublished" bibinfo.check output
   new.block
   format.note output
   fin.entry
@@ -1587,9 +1599,9 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\natexlab}[1]{#1}"
   write$ newline$
-  "\providecommand{\url}[1]{\texttt{#1}}"
+  "\providecommand{\url}[1]{#1}"
   write$ newline$
-  "\providecommand{\urlprefix}{URL: }"
+  "\providecommand{\urlprefix}{URL:~}"
   write$ newline$
   "\providecommand{\selectlanguage}[1]{\relax}"
   write$ newline$
