@@ -577,15 +577,23 @@ FUNCTION {format.note}
 FUNCTION {format.url}
 { url empty$
   { "" }
-  {   
-    lastchecked empty$
-    { "there is url but no lastchecked in " cite$ * warning$ }
-    { 
-      "~[{Aufruf am:} " * lastchecked * "]" *
+  { lastchecked empty$
+    { "there is url but no lastchecked in " cite$ * warning$
       " \urlprefix\url{" * url * "}" *
     }
+    { lastrevised empty$
+      { 
+        "~[{Aufruf am:} " * lastchecked * "]" *
+        " \urlprefix\url{" * url * "}" *
+      }
+      {
+        "~[{Aktualisiert am:} " * lastrevised * ", " * "{Aufruf am:} " * lastchecked * "]" *
+        " \urlprefix\url{" * url * "}" *
+      }
+      if$
+    }
     if$
-   }
+  }
  if$
 }        
 
