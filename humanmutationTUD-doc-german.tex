@@ -43,14 +43,13 @@ Beispiel: Webseiten}
   ]
   {hyperref}             % PDF automatisch mit Links versehen und weitere
                          % Hypertext-Funktionalitaet ermoeglichen
-%\usepackage{url}
 \def\UrlFont{\sffamily}  % URLs in Sans Serif
 
 
 %opening
 \title{Anpassungen des Stils \emph{Human Mutation} an die
 Richtlinien der Medizinischen Fakultät Carl Gustav Carus, TU Dresden}
-\subtitle{v0.2 vom xx.~Mai 2017}
+\subtitle{v0.2 vom 11.~Mai 2017}
 \author{Daniel Kotik\\
 \large\url{https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden}\\
 \large\url{daniel.kotik85@gmail.com}}
@@ -122,8 +121,14 @@ definieren:
 
 \bibliographystyle{humanmutationTUD}  % angepasste Bibliographiestildatei ohne
                                       % Endung '.bst' angeben
-\usepackage{url}         % ODER aber \usepackage[...]{hyperref} für farbige und
-                         % klickbare Links im PDF
+\usepackage[%
+  breaklinks,            % Links ueberstehen Zeilenumbruch
+  colorlinks,            % Links erhalten Farben statt Kaesten
+  citecolor=blue,        % Farbe fuer Zitate
+  linkcolor=blue,        % beeinflusst Inhaltsverzeichnis und Seitenzahlen
+  urlcolor=blue          % Farbe fuer URLs
+]{hyperref}              % PDF automatisch mit Links versehen und weitere
+                         % Hypertext-Funktionalitaet ermoeglichen
 \def\UrlFont{\sffamily}  % verhindert URLs in Schreibmaschinenschrift
 \end{Verbatim}
 \end{singlespace}
@@ -256,17 +261,15 @@ Anhand von~\citejournals{vonschulthess2010} wird das Zitieren eines
 bereits veröffentlichten Artikels und von~\citejournals{Cronin2017} eines noch
 unveröffentlichten Artikels
 verdeutlicht. Für den Literaturtyp \verb|unpublished| wird ein
-zusätzliches Feld \verb|doi={...}| zur Angabe der DOI (\textbf{D}igital
+zusätzliches Feld \verb|doi={...}| zur Angabe des DOI (\textbf{D}igital
 \textbf{O}bject \textbf{I}dentifier) bereitgestellt\footnote{Das Vorhandensein
 des Feldes \verb|doi={...}| bleibt für alle anderen Literaturtypen ohne
 Wirkung.}. Das optionale \verb|language| Feld beeinflusst den Hinweis auf einen
 sich im Druck befindlichen, d.h.\ bisher unveröffentlichten Artikel ("`[im
 Druck]"' für \verb|ngerman| bzw.\ "`[in press]"' für die englische und alle
-anderen Sprachen).
-
-%TODO: url mit der DOI verlinken (url = {https://doi.org/10.1093/qjmed/hcx091},)
-%TODO: optionales Feld 'journal' bereitstellen (journal = {QJM},)
-%TODO: Warnung ausgeben, falls 'doi' entry in 'unpuplished' leer oder fehlt
+anderen Sprachen). Der DOI wird automatisch dem DOI Resolver
+\url{https://dx.doi.org/} übergeben und verlinkt. Ein eventuell vorhandenes
+Feld \verb|month| bleibt ohne Wirkung.
 
 % \footnote{Unveröffentlichte Artikel, welche auf PubMed gelistet
 % sind, können mit \url{ http://www.bioinformatics.org/texmed/} ansatzweise in
@@ -276,19 +279,20 @@ anderen Sprachen).
 \cprotect{\noindent\makebox[1.0\textwidth][c]}{%
 \small
 \begin{minipage}[t]{1.25\textwidth}
-    \begin{minipage}[t][8.8cm][c]{0.525\textwidth}
+    \begin{minipage}[t][9cm][c]{0.53\textwidth}
       %\hrulefill
       \begin{singlespace}
       \begin{Verbatim}[frame=single,commandchars=\\\(\)]
 @unpublished{Cronin2017,
-   author = {Cronin, O. and Keohane, D. M. and Molloy, M. G.
-             and Shanahan, F.},
-   title  = {The effect of exercise interventions on
+   author  = {Cronin, O. and Keohane, D. M. and Molloy, M. G.
+              and Shanahan, F.},
+   title   = {The effect of exercise interventions on
              inflammatory biomarkers in healthy, physically
              inactive subjects: a systematic review},
-   (\color(red)doi    = {10.1093/qjmed/hcx091},)
-   year   = {2017},
-   month  = {May}
+   (\color(red)doi     = {10.1093/qjmed/hcx091},)
+   journal = {QJM},
+   year    = {2017},
+   month   = {May}
 }
 
 @article{vonschulthess2010,
@@ -307,7 +311,7 @@ anderen Sprachen).
      %\hrulefill
     \end{minipage}
     \hfill
-    \begin{minipage}[t][8.8cm][c]{0.45\textwidth}
+    \begin{minipage}[t][9cm][c]{0.45\textwidth}
       %\hrulefill
       \bibliographyjournals{example}
       \bibliographystylejournals{humanmutationTUD}
