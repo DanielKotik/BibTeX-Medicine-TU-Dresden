@@ -89,6 +89,8 @@ ENTRY
     title
     type
     url
+    shorturl
+    host
     lastchecked
     lastrevised
     volume
@@ -573,6 +575,37 @@ FUNCTION {format.note}
     }
   if$
 }
+
+FUNCTION {format.shorturl}
+{ shorturl empty$
+ { "" }
+ { host empty$
+   {
+     "there is shorturl but no host in " cite$ * warning$
+     " " " \shorturlprefix\url{" * shorturl * "}" *
+   }
+   { lastchecked empty$
+     { 
+       "there is shorturl and host but no lastchecked in " cite$ * warning$
+       " " " \shorturlprefix\url{" * shorturl * "}" * ", " * " \hostprefix\url{" * host * "}" *
+     }
+     { lastrevised empty$
+       { 
+         "~[{Aufruf am:} " * lastchecked * "]" *
+         " " " \shorturlprefix\url{" * shorturl * "}" * ", " * " \hostprefix\url{" * host * "}" *
+       }
+       {
+         "~[{Aktualisiert am:} " * lastrevised * ", " * "{Aufruf am:} " * lastchecked * "]" *
+         " " " \shorturlprefix\url{" * shorturl * "}" * ", " * " \hostprefix\url{" * host * "}" *
+       }
+       if$
+     }
+     if$
+   }
+   if$
+ }
+ if$
+} 
         
 FUNCTION {format.url}
 { url empty$
@@ -594,7 +627,7 @@ FUNCTION {format.url}
     }
     if$
   }
- if$
+  if$
 }        
 
 % This function converts all characters of the string given in the title entry to 
@@ -1218,11 +1251,15 @@ FUNCTION {webpage}
  date.block
  format.title output
  new.block
- format.url "" output
+ url empty$
+   {format.shorturl "url and shorturl (need one of them)" output.check}
+%   {format.shorturl "" output}
+   {format.url "" output}
+ if$
  % new.block
  % format.note output
  fin.entry
- }
+}
 FUNCTION {misc}
 { output.bibitem
  format.authors output
@@ -1610,6 +1647,10 @@ FUNCTION {begin.bib}
   "\providecommand{\url}[1]{#1}"
   write$ newline$
   "\providecommand{\urlprefix}{URL:~}"
+  write$ newline$
+  "\providecommand{\shorturlprefix}{short URL:~}"
+  write$ newline$
+  "\providecommand{\hostprefix}{Host:~}"
   write$ newline$
   "\providecommand{\selectlanguage}[1]{\relax}"
   write$ newline$
