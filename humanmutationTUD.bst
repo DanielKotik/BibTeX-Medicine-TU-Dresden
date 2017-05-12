@@ -580,9 +580,25 @@ FUNCTION {format.shorturl}
 { shorturl empty$
  { "" }
  { host empty$
-   {
-     "there is shorturl but no host in " cite$ * warning$
-     " " " \shorturlprefix\url{" * shorturl * "}" *
+    { lastchecked empty$
+      { 
+        "there is shorturl but no host and no lastchecked in " cite$ * warning$
+        " " " \shorturlprefix\url{" * shorturl * "}" *
+      }
+      { lastrevised empty$
+        { 
+          "there is shorturl but no host in " cite$ * warning$
+          " " "~[{Aufruf am:} " * lastchecked * "]" *
+          " \shorturlprefix\url{" * shorturl * "}" * 
+        }
+        { 
+          "there is shorturl but no host in " cite$ * warning$
+          " " "~[{Aktualisiert am:} " * lastrevised * ", " * "{Aufruf am:} " * lastchecked * "]" *
+          " \shorturlprefix\url{" * shorturl * "}" *
+        }
+        if$
+     }
+     if$
    }
    { lastchecked empty$
      { 
