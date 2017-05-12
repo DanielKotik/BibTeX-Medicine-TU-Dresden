@@ -34,5 +34,5 @@ Version __0.1__ (released 5 Mai 2017):
   This work consists of the files in this repository.
   
   **For commercial use of this work or a derived or compiled work (as defined in 
-  the LPPL v1.3c), contact me before at daniel.kotik85@gmail.com**
+  the LPPL v1.3c), contact me before at kotik@physics.org**
   
