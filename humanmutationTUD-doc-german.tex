@@ -50,7 +50,7 @@ Beispiel: Webseiten}
 %opening
 \title{Anpassungen des Stils \emph{Human Mutation} an die
 Richtlinien der Medizinischen Fakultät Carl Gustav Carus, TU Dresden}
-\subtitle{v0.3 vom 5.~Mai 2017}
+\subtitle{v0.3 vom xx.~Mai 2017}
 \author{Daniel Kotik\\
 \large\url{https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden}\\
 \large\url{kotik@physics.org}}
@@ -288,18 +288,36 @@ verdeutlicht.
 }
 
 \subsection{Zitieren von Webseiten}
-Hier zitieren wir \citeweb{humanmutationSchneider}.
+Hier zitieren wir \citeweb{humanmutationSchneider} und
+\citeweb{ZitiervorgabenCGC}. Bei einem deutschen Titel sollte auch
+\verb|language={ngerman}| angegeben werden. Dem Feld \verb|lastrevised={...}|
+kann optional ein Datum .... übergeben werden. Ein Wert für das Feld
+\verb|lastchecked={...}| ist hingegen zwingend erforderlich.
 %TODO: Zitierung von zwei Webseiten: einmal mit short URL, einmal gewöhnlich.
 %TODO: lastchecked erläutern --> notwendige Angabe --> Warnung wird ausgegeben
 %TODO: lastrevised erklären --> optional
+%TODO: Punkt vor 'short URL' entfernen
 
 \cprotect{\noindent\makebox[1.0\textwidth][c]}{%
 \small
 \begin{minipage}[t]{1.2\textwidth}
-    \begin{minipage}[t][5cm][c]{0.527\textwidth}
+    \begin{minipage}[t][9cm][c]{0.527\textwidth}
       %\hrulefill
       \begin{singlespace}
       \begin{Verbatim}[frame=single]
+@webpage{ZitiervorgabenCGC,
+  author   = {Bilz, Alexander},
+  year     = 2013,
+  title    = {Zitierrichtlinien f{\"u}r Dissertationen an
+              der Medizinischen Fakultät der TU Dresden},
+  language = {ngerman},
+  url      = {},
+  shorturl = {https://goo.gl/DbLwTW},
+  host     = {https://tu-dresden.de/med/mf},
+  lastchecked = {27.04.2017},
+  lastrevised = {}
+}
+
 @webpage{humanmutationSchneider,
 author  = {Schneider, Thomas},
 year    = 1998,
@@ -314,7 +332,7 @@ lastrevised = {27.05.2016}
      %\hrulefill
     \end{minipage}
     \hfill
-    \begin{minipage}[t][5cm][c]{0.45\textwidth}
+    \begin{minipage}[t][9cm][c]{0.45\textwidth}
       %\hrulefill
       \bibliographyweb{example}
       \bibliographystyleweb{humanmutationTUD}
