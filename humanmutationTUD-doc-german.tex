@@ -288,15 +288,17 @@ verdeutlicht.
 }
 
 \subsection{Zitieren von Webseiten}
-Hier zitieren wir \citeweb{humanmutationSchneider} und
+Hier zitieren wir zwei Webseiten. Zum einen~\citeweb{humanmutationSchneider}
+und die diesem Dokument zugrunde liegenden Zitiervorgaben
 \citeweb{ZitiervorgabenCGC}. Bei einem deutschen Titel sollte auch
 \verb|language={ngerman}| angegeben werden. Dem Feld \verb|lastrevised={...}|
-kann optional ein Datum .... übergeben werden. Ein Wert für das Feld
-\verb|lastchecked={...}| ist hingegen zwingend erforderlich.
-%TODO: Zitierung von zwei Webseiten: einmal mit short URL, einmal gewöhnlich.
+kann optional das Datum der letzten Änderung der Webseite übergeben werden
+(date of last revision). Das Datum des Webseitenaufrufs hingegen ist zwingend
+erforderlich und muss als Wert dem Feld
+\verb|lastchecked={...}| übergeben werden (falls nicht, wird eine
+Warnung beim Kompilieren mit \hologo{BibTeX} ausgegeben).
 %TODO: lastchecked erläutern --> notwendige Angabe --> Warnung wird ausgegeben
 %TODO: lastrevised erklären --> optional
-%TODO: Punkt vor 'short URL' entfernen
 
 \cprotect{\noindent\makebox[1.0\textwidth][c]}{%
 \small
