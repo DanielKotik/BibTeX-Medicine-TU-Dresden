@@ -5,7 +5,7 @@
 % Please contact me at https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden
 % if your find erros or ask for feature requests.
 %
-% This is version v0.1, released on May 5, 2017.
+% This is version v0.3, released on May 14, 2017.
  
  
 % ---------- original docstring from the bst file as output of the makebst utility
@@ -603,16 +603,17 @@ FUNCTION {format.shorturl}
    { lastchecked empty$
      { 
        "there is shorturl and host but no lastchecked in " cite$ * warning$
-       " " " \shorturlprefix\url{" * shorturl * "}" * ", " * " \hostprefix\url{" * host * "}" *
+       " " "~[{Aufruf am:} " * "??.??.????" * "]" *
+       " \shorturlprefix\url{" * shorturl * "}" * ", " * " \hostprefix\url{" * host * "}" *
      }
      { lastrevised empty$
        { 
-         "~[{Aufruf am:} " * lastchecked * "]" *
-         " " " \shorturlprefix\url{" * shorturl * "}" * ", " * " \hostprefix\url{" * host * "}" *
+         " " "~[{Aufruf am:} " * lastchecked * "]" *
+         " \shorturlprefix\url{" * shorturl * "}" * ", " * " \hostprefix\url{" * host * "}" *
        }
        {
-         "~[{Aktualisiert am:} " * lastrevised * ", " * "{Aufruf am:} " * lastchecked * "]" *
-         " " " \shorturlprefix\url{" * shorturl * "}" * ", " * " \hostprefix\url{" * host * "}" *
+         " " "~[{Aktualisiert am:} " * lastrevised * ", " * "{Aufruf am:} " * lastchecked * "]" *
+         " \shorturlprefix\url{" * shorturl * "}" * ", " * " \hostprefix\url{" * host * "}" *
        }
        if$
      }
@@ -1266,14 +1267,11 @@ FUNCTION {webpage}
  format.date "year" output.check
  date.block
  format.title output
- new.block
+ add.blank
  url empty$
    {format.shorturl "url and shorturl (need one of them)" output.check}
-%   {format.shorturl "" output}
    {format.url "" output}
  if$
- % new.block
- % format.note output
  fin.entry
 }
 FUNCTION {misc}
