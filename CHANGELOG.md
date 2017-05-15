@@ -19,6 +19,7 @@ All notable changes to the file 'humanmutationTUD.bst' will be documented here.
 ### Added
 - Some minor fixes.
 - Description for function 'fix.language'.
+- Descriptions to functions 'capitalize' and 'format.title'.
 - Function 'format.in.pages' for printing language specific abbreviations for
   'Page(s)' in entries 'incollection' and 'inbook'.
 - Function 'fix.language' to check for missing or empty entry 'language'. If
@@ -26,8 +27,7 @@ All notable changes to the file 'humanmutationTUD.bst' will be documented here.
 
 ### Changed
 - Modify function 'format.title' to not to change any characters of strings given
-  in the title entry for language 'ngerman' add descriptions to functions 
-  'capitalize' and 'format.title'.
+  in the title entry for language 'ngerman'. 
 
 - Modify 'select.language' function to enforce usage of Babel hyphenation patterns
   for the title either as specified by the entry language or if missing using 

@@ -5,7 +5,7 @@
 % Please contact me at https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden
 % if your find erros or ask for feature requests.
 %
-% This is version v0.2, released on May 11, 2017.
+% This is version v0.3, released on May 15, 2017.
  
  
 % ---------- original docstring from the bst file as output of the makebst utility
@@ -90,6 +90,10 @@ ENTRY
     title
     type
     url
+    shorturl
+    host
+    lastchecked
+    lastrevised
     volume
     year
   }
@@ -589,6 +593,77 @@ FUNCTION {format.note}
     }
   if$
 }
+
+FUNCTION {format.shorturl}
+{ shorturl empty$
+ { "" }
+ { host empty$
+    { lastchecked empty$
+      { 
+        "there is shorturl but no host and no lastchecked in " cite$ * warning$
+        " " " \shorturlprefix\url{" * shorturl * "}" *
+      }
+      { lastrevised empty$
+        { 
+          "there is shorturl but no host in " cite$ * warning$
+          " " "~[{Aufruf am:} " * lastchecked * "]" *
+          " \shorturlprefix\url{" * shorturl * "}" * 
+        }
+        { 
+          "there is shorturl but no host in " cite$ * warning$
+          " " "~[{Aktualisiert am:} " * lastrevised * ", " * "{Aufruf am:} " * lastchecked * "]" *
+          " \shorturlprefix\url{" * shorturl * "}" *
+        }
+        if$
+     }
+     if$
+   }
+   { lastchecked empty$
+     { 
+       "there is shorturl and host but no lastchecked in " cite$ * warning$
+       " " "~[{Aufruf am:} " * "??.??.????" * "]" *
+       " \shorturlprefix\url{" * shorturl * "}" * ", " * " \hostprefix\url{" * host * "}" *
+     }
+     { lastrevised empty$
+       { 
+         " " "~[{Aufruf am:} " * lastchecked * "]" *
+         " \shorturlprefix\url{" * shorturl * "}" * ", " * " \hostprefix\url{" * host * "}" *
+       }
+       {
+         " " "~[{Aktualisiert am:} " * lastrevised * ", " * "{Aufruf am:} " * lastchecked * "]" *
+         " \shorturlprefix\url{" * shorturl * "}" * ", " * " \hostprefix\url{" * host * "}" *
+       }
+       if$
+     }
+     if$
+   }
+   if$
+ }
+ if$
+} 
+        
+FUNCTION {format.url}
+{ url empty$
+  { "" }
+  { lastchecked empty$
+    { "there is url but no lastchecked in " cite$ * warning$
+      " \urlprefix\url{" * url * "}" *
+    }
+    { lastrevised empty$
+      { 
+        "~[{Aufruf am:} " * lastchecked * "]" *
+        " \urlprefix\url{" * url * "}" *
+      }
+      {
+        "~[{Aktualisiert am:} " * lastrevised * ", " * "{Aufruf am:} " * lastchecked * "]" *
+        " \urlprefix\url{" * url * "}" *
+      }
+      if$
+    }
+    if$
+  }
+  if$
+}        
 
 % This function converts all characters of the string given in the title entry to 
 % lower case all letters except the very first character. For language 'ngerman' 
@@ -1203,7 +1278,33 @@ FUNCTION {manual}
   format.note output
   fin.entry
 }
-
+FUNCTION {webpage}
+{ output.bibitem
+ format.authors output
+ author format.key output
+ format.date "year" output.check
+ date.block
+ format.title output
+ add.blank
+ url empty$
+   {format.shorturl "url and shorturl (need one of them)" output.check}
+   {format.url "" output}
+ if$
+ fin.entry
+}
+FUNCTION {misc}
+{ output.bibitem
+ format.authors output
+ author format.key output
+ format.date "year" output.check
+ date.block
+ format.title output
+ new.block
+ howpublished "howpublished" bibinfo.check output
+ new.block
+ format.note output
+ fin.entry
+ }
 FUNCTION {mastersthesis}
 { output.bibitem
   format.authors "author" output.check
@@ -1216,20 +1317,6 @@ FUNCTION {mastersthesis}
   bbl.mthesis format.thesis.type output.nonnull
   school "school" bibinfo.warn output
   address "address" bibinfo.check output
-  new.block
-  format.note output
-  fin.entry
-}
-
-FUNCTION {misc}
-{ output.bibitem
-  format.authors output
-  author format.key output
-  format.date "year" output.check
-  date.block
-  format.title output
-  new.block
-  howpublished "howpublished" bibinfo.check output
   new.block
   format.note output
   fin.entry
@@ -1599,7 +1686,9 @@ FUNCTION {begin.bib}
   write$ newline$
   "\providecommand{\doiprefix}{DOI:~}"
   write$ newline$
- % "\providecommand{\doi}[1]{#1}"
+  "\providecommand{\shorturlprefix}{short URL:~}"
+  write$ newline$
+  "\providecommand{\hostprefix}{Host:~}"
   "\providecommand{\doi}[1]{\href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}"
   write$ newline$
   "\providecommand{\selectlanguage}[1]{\relax}"

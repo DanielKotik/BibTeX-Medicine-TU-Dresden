@@ -21,7 +21,7 @@ headsep=10mm, footskip=12mm}
 
 \usepackage[english,main=ngerman]{babel}
 \usepackage{multibib}
-\newcites{books,incoll,journals,websites}{Beispiel: Monographie,%
+\newcites{books,incoll,journals,web}{Beispiel: Monographie,%
 Beispiel: Sammelb\"ande,%
 Beispiel: Zeitschriftenartikel,%
 Beispiel: Webseiten}
@@ -49,10 +49,10 @@ Beispiel: Webseiten}
 %opening
 \title{Anpassungen des Stils \emph{Human Mutation} an die
 Richtlinien der Medizinischen Fakultät Carl Gustav Carus, TU Dresden}
-\subtitle{v0.2 vom 11.~Mai 2017}
+\subtitle{v0.3 vom 15.~Mai 2017}
 \author{Daniel Kotik\\
 \large\url{https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden}\\
-\large\url{daniel.kotik85@gmail.com}}
+\large\url{kotik@physics.org}}
 \date{}
 
 \begin{document}
@@ -87,9 +87,9 @@ angenommen.
 
 Die Stildatei \verb|humanmutationTUD.bst| unterstützt folgende Literaturtypen:
 \verb|article|, \verb|book|, \verb|booklet|, \verb|inbook|,
-\verb|incollection|, \verb|inproceedings|(=\verb|conference|),
-\verb|mastersthesis|, \verb|phdthesis|, \verb|proceedings|, \verb|unpublished|,
-\verb|techreport|, \verb|manual|, \verb|misc|.
+\verb|incollection|, \verb|inproceedings|(=\verb|conference|), \verb|manual|,
+\verb|mastersthesis|, \verb|misc|, \verb|phdthesis|, \verb|proceedings|,
+\verb|techreport|, \verb|unpublished|, \verb|webpage|.
 
 %TODO: Angaben, welche Typen besonders durch den Stil beeinflusst werden (book,
 %inpriceedings, webiste, unpublished). --> neuer Typ 'website'
@@ -286,7 +286,7 @@ Feld \verb|month| bleibt ohne Wirkung.
     \begin{minipage}[t][9cm][c]{0.53\textwidth}
       %\hrulefill
       \begin{singlespace}
-      \begin{Verbatim}[frame=single,commandchars=\\\(\)]
+      \begin{Verbatim}[frame=single]
 @unpublished{Cronin2017,
    author  = {Cronin, O. and Keohane, D. M. and Molloy, M. G.
               and Shanahan, F.},
@@ -324,8 +324,80 @@ Feld \verb|month| bleibt ohne Wirkung.
 \end{minipage}
 }
 
-%TODO:\subsection{Zitieren von Webseiten}
-%TODO: Zitierung von zwei Webseiten: einmal mit short URL, einmal gewöhnlich.
+\subsection{Zitieren von Webseiten}
+Zum Zitieren von Webseiten wird durch die Bibliographiestildatei
+der Literaturtyp \verb|webpage| zur Verfügung gestellt. Webseiten können
+damit auf zweierlei Weise zitiert werden. Beide Varianten seien hier
+beispielhaft an~\citeweb{humanmutationSchneider} sowie die diesem Dokument
+zugrunde liegenden Zitiervorgaben
+\citeweb{ZitiervorgabenCGC} erläutert. Beide Varianten unterscheiden sich
+lediglich in der Angabe des~URL: Für äußerst lange bzw.\ unhandliche
+URLs\footnote{Zum
+Beispiel der originale URL von \cite{ZitiervorgabenCGC}: \url{
+https://tu-dresden.de/med/mf/ressourcen/dateien/postgraduales/promotionen/zitier
+richtinien_fuer_die_dissertation_formblatt9.0?lang=de}.} empfiehlt es sich
+einen kurzen Alias (short URL)\footnote{Beispielhaft genannt seien hier die
+Dienste \url{https://goo.gl/} und \url{https://bitly.com/}.} mittels
+\verb|shorturl={...}| anzugeben. Verliert der Link später seine Gültigkeit oder
+ändert sich die Adresse, wird durch die Angabe des Hostnames \verb|host={...}|
+(und der ersten Teilpfade) zusätzlich kenntlich gemacht, wo die Datei
+ursprünglich im WWW aufzufinden war. Dadurch kann auch später die Datei oder
+Webseite, sofern noch vorhanden, möglicherweise wiedergefunden werden, selbst
+wenn sich der ursprüngliche URL geändert hat. Für kurze URLs kann dieser direkt
+dem Feld \verb|url={...}| übergeben werden.
+
+Für eine korrekte Silbentrennung  des Titels sollte bei einer deutschsprachigen
+Webseite zudem zusätzlich
+\verb|language={ngerman}| mit eingetragen werden. Dem Feld
+\verb|lastrevised={...}|
+kann optional das Datum der letzten Änderung der Webseite übergeben werden
+(date of last revision). Das Datum des Webseitenaufrufs hingegen ist zwingend
+erforderlich und muss als Wert dem Feld
+\verb|lastchecked={...}| übergeben werden (falls nicht, wird eine
+Warnung beim Kompilieren mit \hologo{BibTeX} ausgegeben).
+
+\cprotect{\noindent\makebox[1.0\textwidth][c]}{%
+\small
+\begin{minipage}[t]{1.2\textwidth}
+    \begin{minipage}[t][9cm][c]{0.527\textwidth}
+      %\hrulefill
+      \begin{singlespace}
+      \begin{Verbatim}[frame=single,commandchars=&\(\)]
+@webpage{ZitiervorgabenCGC,
+  author   = {Bilz, Alexander},
+  year     = 2013,
+  title    = {Zitierrichtlinien f{\"u}r Dissertationen an
+              der Medizinischen Fakultät der TU Dresden},
+  language = {ngerman},
+  url      = {},
+  (&color(red)shorturl = {https://goo.gl/DbLwTW},)
+  (&color(red)host     = {https://tu-dresden.de/med/mf},)
+  (&color(red)lastchecked = {27.04.2017},)
+  (&color(red)lastrevised = {})
+}
+
+@webpage{humanmutationSchneider,
+  author = {Schneider, Thomas},
+  year   = 1998,
+  title  = {\hologo{BibTeX} `humanmutation' bibliography
+            style},
+  url    = {https://schneider.ncifcrf.gov/latex.html},
+  (&color(red)lastchecked = {05.05.2017},)
+  (&color(red)lastrevised = {27.05.2016})
+}
+     \end{Verbatim}
+     \end{singlespace}
+     %\hrulefill
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t][9cm][c]{0.45\textwidth}
+      %\hrulefill
+      \bibliographyweb{example}
+      \bibliographystyleweb{humanmutationTUD}
+      %\hrulefill
+    \end{minipage}
+\end{minipage}
+}
 
 \subsection{Fallstricke}
 Hier zitieren wir den Artikel~\cite{teras2016_FALSCH} und noch einmal in
@@ -376,10 +448,12 @@ einfügen}
  \item Auflage: Angabe nur ab 2.~Auflage aufwärts
  \item korrekte Angabe der Auflage, d.h.\ "`2.~Aufl."', "`2.~erw. Aufl."', "`2nd
 ed."'
- \item Erstellen eines eigenen Eintrags für Webseiten (zum Beispiel
-\verb|@website|), mit Feldern für \emph{URL} (alternativ \emph{short URL} und
-\emph{hostname}) sowie Felder für \emph{Aufruf am}\footnote{date retrieved} und
-\emph{Aktualisiert am}\footnote{date of last revision} (v0.3). \sout{Es gilt zu
+ \item \sout{Erstellen eines eigenen Eintrags für Webseiten (zum Beispiel}
+\verb|@webpage|\sout{), mit Feldern für \emph{URL} (alternativ \emph{short URL}
+und
+\emph{hostname}) sowie Felder für \emph{Aufruf am}}\footnote{date
+retrieved}\sout{ und
+\emph{Aktualisiert am}}\footnote{date of last revision}\sout{ (v0.3). Es gilt zu
 beachten,
 dass die URL nicht im typewriter Font angegeben werden soll. Eventuell muss das
 Paket hyperref bzw. url sinnvollerweise geladen werden.}
