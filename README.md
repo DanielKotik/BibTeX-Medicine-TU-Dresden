@@ -11,9 +11,14 @@ Technische Universität Dresden
 * editor field in parentheses: ``(Hrsg)``, ``(ed)`` or ``(eds)``, respectively
 * incollection booktitle preceded by ``In: ``
 * page numbers for inbook and incollection preceded by ``S. ``, ``p.`` or ``pp.``, respectively
-* references to accepted articles not yet published display the DOI preceded by ``[im Druck]`` or ``[in press]``, respectively 
+* references to accepted articles not yet published display the DOI preceded by ``[im Druck]`` or ``[in press]``, respectively
+* support of webpages
 
 ### Version history (for details see CHANGELOG)
+Version __0.3__ (released 11 Mai 2017):
+  
+  * support of webpages (incl. short URL, date retrieved, date of last revision)
+
 Version __0.2__ (released 11 Mai 2017):
   
   * support of unpublished references

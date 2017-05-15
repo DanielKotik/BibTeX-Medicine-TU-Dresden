@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to the file 'humanmutationTUD.bst' will be documented here.
 
+## [v0.3] - 2017-05-16
+### Added
+- ...
+
 ## [v0.2] - 2017-05-11
 ### Added
 - Command '\doi' providing a link to the DOI resolver for yet unpublished articles

@@ -5,7 +5,7 @@
 % Please contact me at https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden
 % if your find erros or ask for feature requests.
 %
-% This is version v0.3, released on May 15, 2017.
+% This is version v0.3, released on May 16, 2017.
  
  
 % ---------- original docstring from the bst file as output of the makebst utility
@@ -1689,6 +1689,7 @@ FUNCTION {begin.bib}
   "\providecommand{\shorturlprefix}{short URL:~}"
   write$ newline$
   "\providecommand{\hostprefix}{Host:~}"
+  write$ newline$
   "\providecommand{\doi}[1]{\href{http://dx.doi.org/\detokenize{#1}}{\detokenize{#1}}}"
   write$ newline$
   "\providecommand{\selectlanguage}[1]{\relax}"
