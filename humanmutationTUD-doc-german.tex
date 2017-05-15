@@ -50,7 +50,7 @@ Beispiel: Webseiten}
 %opening
 \title{Anpassungen des Stils \emph{Human Mutation} an die
 Richtlinien der Medizinischen Fakultät Carl Gustav Carus, TU Dresden}
-\subtitle{v0.3 vom xx.~Mai 2017}
+\subtitle{v0.3 vom 15.~Mai 2017}
 \author{Daniel Kotik\\
 \large\url{https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden}\\
 \large\url{kotik@physics.org}}
@@ -90,7 +90,7 @@ Die Stildatei \verb|humanmutationTUD.bst| unterstützt folgende Literaturtypen:
 \verb|article|, \verb|book|, \verb|booklet|, \verb|inbook|,
 \verb|incollection|, \verb|inproceedings|(=\verb|conference|), \verb|manual|,
 \verb|mastersthesis|, \verb|misc|, \verb|phdthesis|, \verb|proceedings|,
-\verb|techreport|, \verb|unpublished|.
+\verb|techreport|, \verb|unpublished|, \verb|webpage|.
 
 %TODO: Angaben, welche Typen besonders durch den Stil beeinflusst werden (book,
 %inpriceedings, webiste, unpublished). --> neuer Typ 'website'
@@ -261,7 +261,7 @@ verdeutlicht.
     \begin{minipage}[t][6cm][c]{0.52\textwidth}
       %\hrulefill
       \begin{singlespace}
-      \begin{Verbatim}[frame=single,commandchars=\\\(\)]
+      \begin{Verbatim}[frame=single]
 @article{vonschulthess2010,
    author   = {von Schulthess, G. K. and Burger, C.},
    title    = {Integrating imaging modalities: what
@@ -288,17 +288,36 @@ verdeutlicht.
 }
 
 \subsection{Zitieren von Webseiten}
-Hier zitieren wir zwei Webseiten. Zum einen~\citeweb{humanmutationSchneider}
-und die diesem Dokument zugrunde liegenden Zitiervorgaben
-\citeweb{ZitiervorgabenCGC}. Bei einem deutschen Titel sollte auch
-\verb|language={ngerman}| angegeben werden. Dem Feld \verb|lastrevised={...}|
+Zum Zitieren von Webseiten wird durch die Bibliographiestildatei
+der Literaturtyp \verb|webpage| zur Verfügung gestellt. Webseiten können
+damit auf zweierlei Weise zitiert werden. Beide Varianten seien hier
+beispielhaft an~\citeweb{humanmutationSchneider} sowie die diesem Dokument
+zugrunde liegenden Zitiervorgaben
+\citeweb{ZitiervorgabenCGC} erläutert. Beide Varianten unterscheiden sich
+lediglich in der Angabe des~URL: Für äußerst lange bzw.\ unhandliche
+URLs\footnote{Zum
+Beispiel der originale URL von \cite{ZitiervorgabenCGC}: \url{
+https://tu-dresden.de/med/mf/ressourcen/dateien/postgraduales/promotionen/zitier
+richtinien_fuer_die_dissertation_formblatt9.0?lang=de}.} empfiehlt es sich
+einen kurzen Alias (short URL)\footnote{Beispielhaft genannt seien hier die
+Dienste \url{https://goo.gl/} und \url{https://bitly.com/}.} mittels
+\verb|shorturl={...}| anzugeben. Verliert der Link später seine Gültigkeit oder
+ändert sich die Adresse, wird durch die Angabe des Hostnames \verb|host={...}|
+(und der ersten Teilpfade) zusätzlich kenntlich gemacht, wo die Datei
+ursprünglich im WWW aufzufinden war. Dadurch kann auch später die Datei oder
+Webseite, sofern noch vorhanden, möglicherweise wiedergefunden werden, selbst
+wenn sich der ursprüngliche URL geändert hat. Für kurze URLs kann dieser direkt
+dem Feld \verb|url={...}| übergeben werden.
+
+Für eine korrekte Silbentrennung  des Titels sollte bei einer deutschsprachigen
+Webseite zudem zusätzlich
+\verb|language={ngerman}| mit eingetragen werden. Dem Feld
+\verb|lastrevised={...}|
 kann optional das Datum der letzten Änderung der Webseite übergeben werden
 (date of last revision). Das Datum des Webseitenaufrufs hingegen ist zwingend
 erforderlich und muss als Wert dem Feld
 \verb|lastchecked={...}| übergeben werden (falls nicht, wird eine
 Warnung beim Kompilieren mit \hologo{BibTeX} ausgegeben).
-%TODO: lastchecked erläutern --> notwendige Angabe --> Warnung wird ausgegeben
-%TODO: lastrevised erklären --> optional
 
 \cprotect{\noindent\makebox[1.0\textwidth][c]}{%
 \small
@@ -306,7 +325,7 @@ Warnung beim Kompilieren mit \hologo{BibTeX} ausgegeben).
     \begin{minipage}[t][9cm][c]{0.527\textwidth}
       %\hrulefill
       \begin{singlespace}
-      \begin{Verbatim}[frame=single]
+      \begin{Verbatim}[frame=single,commandchars=&\(\)]
 @webpage{ZitiervorgabenCGC,
   author   = {Bilz, Alexander},
   year     = 2013,
@@ -314,10 +333,10 @@ Warnung beim Kompilieren mit \hologo{BibTeX} ausgegeben).
               der Medizinischen Fakultät der TU Dresden},
   language = {ngerman},
   url      = {},
-  shorturl = {https://goo.gl/DbLwTW},
-  host     = {https://tu-dresden.de/med/mf},
-  lastchecked = {27.04.2017},
-  lastrevised = {}
+  (&color(red)shorturl = {https://goo.gl/DbLwTW},)
+  (&color(red)host     = {https://tu-dresden.de/med/mf},)
+  (&color(red)lastchecked = {27.04.2017},)
+  (&color(red)lastrevised = {})
 }
 
 @webpage{humanmutationSchneider,
@@ -326,8 +345,8 @@ Warnung beim Kompilieren mit \hologo{BibTeX} ausgegeben).
   title  = {\hologo{BibTeX} `humanmutation' bibliography
             style},
   url    = {https://schneider.ncifcrf.gov/latex.html},
-  lastchecked = {05.05.2017},
-  lastrevised = {27.05.2016}
+  (&color(red)lastchecked = {05.05.2017},)
+  (&color(red)lastrevised = {27.05.2016})
 }
      \end{Verbatim}
      \end{singlespace}
@@ -391,16 +410,18 @@ einfügen}
  \item Auflage: Angabe nur ab 2.~Auflage aufwärts
  \item korrekte Angabe der Auflage, d.h.\ "`2.~Aufl."', "`2.~erw. Aufl."', "`2nd
 ed."'
- \item Erstellen eines eigenen Eintrags für Webseiten (zum Beispiel
-\verb|@webpage|), mit Feldern für \emph{URL} (alternativ \emph{short URL} und
-\emph{hostname}) sowie Felder für \emph{Aufruf am}\footnote{date retrieved} und
-\emph{Aktualisiert am}\footnote{date of last revision} (v0.2). \sout{Es gilt zu
+ \item \sout{Erstellen eines eigenen Eintrags für Webseiten (zum Beispiel}
+\verb|@webpage|\sout{), mit Feldern für \emph{URL} (alternativ \emph{short URL}
+und
+\emph{hostname}) sowie Felder für \emph{Aufruf am}}\footnote{date
+retrieved}\sout{ und
+\emph{Aktualisiert am}}\footnote{date of last revision}\sout{ (v0.3). Es gilt zu
 beachten,
 dass die URL nicht im typewriter Font angegeben werden soll. Eventuell muss das
 Paket hyperref bzw. url sinnvollerweise geladen werden.}
 \item korrekter Umgang mit Journalabkürzungen
 \item Hinweis (in press) bzw.\ (im Druck) mit DOI f\"ur im Druck befindliche und
-vorab elektronisch ver\"offentlichte Artikel (v0.3)
+vorab elektronisch ver\"offentlichte Artikel (v0.2)
 \end{itemize}
 
 
