@@ -3,7 +3,7 @@
 % Germany. It was orinially generated with the makebst utility of Patric W Daly
 % and after that manually modified by Daniel Kotik (Dresden, Germany).
 % Please contact me at https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden
-% if your find erros or ask for feature requests.
+% if you find any erros or ask for feature requests.
 %
 % This is version v0.3, released on May 16, 2017.
  
