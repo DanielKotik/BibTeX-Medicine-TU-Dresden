@@ -69,7 +69,7 @@ Datei.
 \end{abstract}
 
 \section{Allgemeine Hinweise}
-Die Zitations- und Bibliographievorgaben \cite{ZitiervorgabenCGC} der
+Die Zitations- und Bibliographievorgaben \cite{Bilz2013} der
 Medizinischen Fakultät Carl Custav
 Carus, TU~Dresden sind an den Stil der Zeitschrift Human
 Mutation\footnote{\url{%
@@ -97,10 +97,10 @@ Die Stildatei \verb|humanmutationTUD.bst| unterstützt folgende Literaturtypen:
 Im Literaturverzeichnis des vorliegenden
 Dokuments findet der hier
 dargelegte Bibliographiestil bereits Anwendung. \\\\
-Es sein darauf verwiesen, dass die unter \cite{humanmutationSchneider}
+Es sein darauf verwiesen, dass die unter \cite{Schneider1998}
 verfügbaren Stil- und Paketdateien \verb|humanmutation.bst| und
 \verb|humanmutation.sty| veraltet sind und auch nicht den zusätzlichen Vorgaben
-nach \cite{ZitiervorgabenCGC} entsprechen.
+nach \cite{Bilz2013} entsprechen.
 
 \section{Integration in \LaTeX}
 In der Präambel sind folgende Pakete einzubinden und Kommandos (optional) zu
@@ -328,12 +328,12 @@ Feld \verb|month| bleibt ohne Wirkung.
 Zum Zitieren von Webseiten wird durch die Bibliographiestildatei
 der Literaturtyp \verb|webpage| zur Verfügung gestellt. Webseiten können
 damit auf zweierlei Weise zitiert werden. Beide Varianten seien hier
-beispielhaft an~\citeweb{humanmutationSchneider} sowie die diesem Dokument
+beispielhaft an~\citeweb{Schneider1998} sowie die diesem Dokument
 zugrunde liegenden Zitiervorgaben
-\citeweb{ZitiervorgabenCGC} erläutert. Beide Varianten unterscheiden sich
+\citeweb{Bilz2013} erläutert. Beide Varianten unterscheiden sich
 lediglich in der Angabe des~URL: Für äußerst lange bzw.\ unhandliche
 URLs\footnote{Zum
-Beispiel der originale URL von \cite{ZitiervorgabenCGC}: \url{
+Beispiel der originale URL von \cite{Bilz2013}: \url{
 https://tu-dresden.de/med/mf/ressourcen/dateien/postgraduales/promotionen/zitier
 richtinien_fuer_die_dissertation_formblatt9.0?lang=de}.} empfiehlt es sich
 einen kurzen Alias (short URL)\footnote{Beispielhaft genannt seien hier die
@@ -363,7 +363,7 @@ Warnung beim Kompilieren mit \hologo{BibTeX} ausgegeben).
       %\hrulefill
       \begin{singlespace}
       \begin{Verbatim}[frame=single,commandchars=&\(\)]
-@webpage{ZitiervorgabenCGC,
+@webpage{Bilz2013,
   author   = {Bilz, Alexander},
   year     = 2013,
   title    = {Zitierrichtlinien f{\"u}r Dissertationen an
@@ -376,7 +376,7 @@ Warnung beim Kompilieren mit \hologo{BibTeX} ausgegeben).
   (&color(red)lastrevised = {})
 }
 
-@webpage{humanmutationSchneider,
+@webpage{Schneider1998,
   author = {Schneider, Thomas},
   year   = 1998,
   title  = {\hologo{BibTeX} `humanmutation' bibliography
@@ -416,30 +416,43 @@ title = {2016 US lymphoid malignancy statistics by World Health Organization
 title = {2016 (\color(red){)US(\color(red)}) lymphoid malignancy statistics by World Health Organization
          subtypes},
 \end{Verbatim}
-Durch die zusätzlichen geschweiften Klammern um \texttt{US} wird erreicht, dass der Titel
-auch korrekt wiedergegeben wird. Andernfalls wird bei englischsprachigen
+Durch die zusätzlichen geschweiften Klammern um \texttt{US} wird erreicht, dass 
+der Titel auch korrekt wiedergegeben wird. Andernfalls wird bei englischsprachigen
 Referenzen durch \hologo{BibTeX} die gesamte Zeichenkette zwischen den
 \"au{\ss}ersten Klammern \texttt{\{\ldots \}} in Kleinschrift gesetzt und
-\emph{nur der erste} Buchstabe gro{\ss} gesetzt (gewünschtes Verhalten). Es empfiehlt sich daher händisch in
-der
+\emph{nur der erste} Buchstabe gro{\ss} gesetzt (gewünschtes Verhalten). Es 
+empfiehlt sich daher händisch in der
 \verb|.bib|~Datei alle Titel Einträge sorgfältig zu überprüfen, auch um
 gegebenenfalls überflüssige Klammern \emph{zu entfernen}\footnote{Abhängig vom
 Tool mit welchem Referenzen gesammelt und später in \hologo{BibTeX}-Einträge
 umgewandelt werden (Zotero, Jabref, Endnote, Google Scholar etc.), wird
 eventuell für alle im Titel vorkommenden Wörter
-Gro{\ss}- und Kleinschreibung forciert; in obigem Beispiel bspw.\ \verb|{W}orld {H}ealth {O}rganization|.},
-so dass ein einheitliches Bild im Literaturverzeichnis gewährleistet ist.
+Gro{\ss}- und Kleinschreibung forciert; in obigem Beispiel bspw.\ 
+\verb|{W}orld {H}ealth {O}rganization|.}, so dass ein einheitliches Bild im 
+Literaturverzeichnis gewährleistet ist.
 
 \subsection{Reihenfolge der Zitate}
-In der Bibliographie werden die Referenzen alphabetisch
-\textcolor{red}{Nach dem Nachnamen des Erstautors?} sortiert. Das gleichzeitige
-Zitieren von mehreren Quellen im Fließtext erfolgt, entsprechend den
-Anforderungen nach \cite{ZitiervorgabenCGC}, chronologisch. Beispiel
-\verb|\cite{Swerdlow2008,Schuhmacher2005,Felber1996}|
-\cite{Swerdlow2008,Schuhmacher2005,ZitiervorgabenCGC,Felber1996}.
+Innerhalb der Bibliographie werden die Referenzen alphabetisch nach dem Nachnamen 
+des Erstautors sortiert. Das gleichzeitige Zitieren von mehreren Quellen im 
+Fließtext soll jedoch, entsprechend den
+Anforderungen nach \cite{Bilz2013}, chronologisch erfolgen. 
+Hierfür ist es notwendig, die korrekte Reihenfolge manuell dem 
+\verb|\cite|-Befehl zu übergeben. Beispiel:\\\\
+\emph{falsch}
+\begin{Verbatim}
+\cite{Swerdlow2008,Schuhmacher2005,Bilz2013,Felber1996}
+\end{Verbatim}
+\vspace{-0.8em}
+\cite{Swerdlow2008,Schuhmacher2005,Bilz2013,Felber1996}\\
+
+\emph{richtig}
+\begin{Verbatim}
+\cite{Felber1996,Schuhmacher2005,Swerdlow2008,Bilz2013}
+\end{Verbatim}
+\vspace{-0.8em}
+\cite{Felber1996,Schuhmacher2005,Swerdlow2008,Bilz2013} 
 
 %TODO: Sort based on 'von' part?
-%TODO: Semikolon innerhalb multipler Referenzen?
 
 \section{Technisches}
 Die Datei \verb|human.dbj| kann in einem Texteditor manuell angepasst
@@ -456,7 +469,8 @@ vorzunehmen.
  \item \sout{Hinweis auf inoffiziellen Status, changelog und Version in Stil
 Datei
 einfügen}
- \item chronologische Reihenfolge von multiplen Referenzen im Fließtext
+ \item chronologische Reihenfolge von multiplen Referenzen im Fließtext 
+       $\rightarrow$ automatisierbar? 
  \item Auflage: Angabe nur ab 2.~Auflage aufwärts
  \item korrekte Angabe der Auflage, d.h.\ "`2.~Aufl."', "`2.~erw. Aufl."', "`2nd
 ed."'
