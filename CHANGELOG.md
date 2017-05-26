@@ -3,7 +3,12 @@ All notable changes to the file 'humanmutationTUD.bst' will be documented here.
 
 ## [v0.3] - 2017-05-16
 ### Added
-- ...
+- Function 'format.shorturl' for printing "Aufruf am:" and "Aktualisiert am:" and
+  handling warnings if entry 'lastchecked' is missing and either 'shorturl' or 'host' are not given
+- Function 'format.url' for printing "Aufruf am:" and "Aktualisiert am:" and
+  handling warnings if entry 'lastchecked' is missing and/or 'url' is not given
+- Commands 'shorturlprefix', 'hostprefix'
+- Reference type 'webpage' with entries shorturl, host, lastchecked and lastrevised
 
 ## [v0.2] - 2017-05-11
 ### Added
