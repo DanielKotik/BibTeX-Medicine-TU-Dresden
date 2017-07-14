@@ -2,9 +2,9 @@
 BibTeX citation style for the Faculty of Medicine Carl Gustav Carus at the 
 Technische Universität Dresden
 
-<a href="https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden/blob/master/humanmutationTUD.bst">The latest version of the style file can be downloaded directly using this link</a>
+<a href="https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden/releases/download/v0.3/humanmutationTUD.bst">The latest version of the style file can be downloaded directly using this link</a>
 
-<a href="https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden/blob/master/humanmutationTUD-doc-german.pdf">A German documentation can be downloaded here</a>
+<a href="https://github.com/DanielKotik/BibTeX-Medicine-TU-Dresden/releases/download/v0.3/humanmutationTUD-doc-german.pdf">A German documentation can be downloaded here</a>
 
 ### Features of humanmutationTUD.bst
 * providing an optional field ``language`` (can be omitted or empty, then English is the default)
